@@ -1,0 +1,26 @@
+{
+  "name": "machine-maintenance-backend",
+  "version": "1.0.0",
+  "description": "machine maintenance backend by srpk-prashant",
+  "keywords": [
+    "machine",
+    "maintainence",
+    "srpk",
+    "prashant"
+  ],
+  "homepage": "https://github.com/last-blade/Jasmine-Mach-Maintenance#readme",
+  "bugs": {
+    "url": "https://github.com/last-blade/Jasmine-Mach-Maintenance/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/last-blade/Jasmine-Mach-Maintenance.git"
+  },
+  "license": "ISC",
+  "author": "srpk-prashant",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
