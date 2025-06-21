@@ -1,0 +1,1 @@
+export const DB_NAME = "machine-maintenance-backend-srpk-prashant";
