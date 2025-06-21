@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
-import express from "express";
-import cors from "cors"
-import CookieParser from "cookieparser";
+import express, {urlencoded} from "express";
+import cors from "cors";
+import cookieParser from "cookie-parser";
 
 const app = express();
 
@@ -15,9 +15,9 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions));
-app.use(express.urlencoded({extended: true, limit: "1mb"}));
+app.use(urlencoded({extended: true, limit: "1mb"}));
 app.use(express.json({limit: "1mb"}));
-app.use(CookieParser());
+app.use(cookieParser());
 app.use(express.static("public"));
 
 export { app }
