@@ -6,6 +6,7 @@ import { generateRefreshToken } from "../utils/generateRefreshToken.js";
 import { User } from "../models/user.model.js";
 import { Asset } from "../models/asset.model.js";
 import { AssetCategory } from "../models/assetCategory.model.js";
+import { AssetBrand } from "../models/assetBrand.model.js";
 
 export {
     asyncHandler,
@@ -15,5 +16,6 @@ export {
     generateRefreshToken,
     User,
     Asset,
-    AssetCategory
+    AssetCategory,
+    AssetBrand,
 }
