@@ -8,7 +8,7 @@ const editAssetCategory = asyncHandler(async (request, response) => {
         throw new apiError(404, "Asset category ID not found")
     }
 
-    if(!assetCategory && !depreciationPercentage){
+    if(!assetCategory || !depreciationPercentage){
         throw new apiError(404, "All fields are required")
     }
 
