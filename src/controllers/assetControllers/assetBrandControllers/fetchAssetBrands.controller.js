@@ -1,0 +1,32 @@
+import mongoose from "mongoose";
+import {apiError, apiResponse, AssetBrand, asyncHandler} from "../../allImports.js";
+
+const fetchAssetBrands = asyncHandler(async (request, response) => {
+  const brands = await AssetBrand.aggregate([
+    {
+      $match: {
+        assetBrandCreator: new mongoose.Types.ObjectId(request.user.id),
+      },
+    },
+
+    {
+      $sort: {
+        assetBrand: 1,
+      },
+    },
+
+    {
+      $project: { __v: 0, assetBrandCreator: 0 },
+    },
+  ]);
+
+  if (brands.length === 0) {
+    throw new apiError(404, "No asset brand found");
+  }
+
+  return response
+    .status(200)
+    .json(new apiResponse(200, brands, "Asset brands fetched"));
+});
+
+export { fetchAssetBrands };
