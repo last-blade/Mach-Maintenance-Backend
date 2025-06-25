@@ -24,7 +24,7 @@ const assetSupplierSchema = new Schema({
         required: false,
     },
 
-    assetSupplierPhone: {
+    assetSupplierLandLine: {
         type: Number,
         trim: true,
         required: false,
