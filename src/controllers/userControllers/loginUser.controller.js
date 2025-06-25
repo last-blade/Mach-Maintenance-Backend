@@ -8,7 +8,7 @@ const loginUser = asyncHandler(async (request, response) => {
         throw new apiError(404, "All fields are required")
     }
 
-    const foundUser = await User.findOne({email}).select("-password -refreshToken -_id -__v");
+    const foundUser = await User.findOne({email});
 
     if(!foundUser){
         throw new apiError(404, "User with this email does not exists")
@@ -28,13 +28,15 @@ const loginUser = asyncHandler(async (request, response) => {
     }
 
     foundUser.refreshToken = refreshToken;
-    foundUser.save({validateBeforeSave: false})
+    foundUser.save({validateBeforeSave: false});
+
+    const user = await User.findOne({email}).select("-password -refreshToken -_id -__v");
 
     return response.status(200)
     .cookie("accessToken", accessToken, accessTokenOptions)
     .cookie("refreshToken", refreshToken, refreshTokenOptions)
     .json(
-        new apiResponse(200, foundUser, "Logged in successfully")
+        new apiResponse(200, user, "Logged in successfully")
     )
 
 });
