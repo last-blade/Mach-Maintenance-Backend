@@ -1,4 +1,4 @@
-export const DB_NAME = "machine-maintenance-backend-srpk-prashant";
+export const DB_NAME = "mac-maintenance-backend-srpk-prashant";
 export const accessTokenOptions = {
     httpOnly: true,
     secure: true,
