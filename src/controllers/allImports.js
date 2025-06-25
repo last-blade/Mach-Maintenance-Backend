@@ -4,6 +4,8 @@ import { apiError } from "../utils/apiError.js";
 import { generateAccessToken } from "../utils/generateAccessToken.js";
 import { generateRefreshToken } from "../utils/generateRefreshToken.js";
 import { User } from "../models/user.model.js";
+import { Asset } from "../models/asset.model.js";
+import { AssetCategory } from "../models/assetCategory.model.js";
 
 export {
     asyncHandler,
@@ -12,4 +14,6 @@ export {
     generateAccessToken,
     generateRefreshToken,
     User,
+    Asset,
+    AssetCategory
 }
