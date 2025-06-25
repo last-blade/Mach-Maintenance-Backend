@@ -3,7 +3,7 @@ import { apiError, apiResponse, AssetCategory, asyncHandler } from "../allImport
 const createAssetCategory = asyncHandler(async (request, response) => {
     const {assetCategory, depreciationPercentage} = request.body;
 
-    if(!assetCategory && !depreciationPercentage){
+    if(!assetCategory || !depreciationPercentage){
         throw new apiError(404, "All fields are required")
     }
 

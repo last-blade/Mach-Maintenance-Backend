@@ -4,7 +4,7 @@ import { apiError, apiResponse, asyncHandler, generateAccessToken, generateRefre
 const loginUser = asyncHandler(async (request, response) => {
     const {email, password} = request.body;
 
-    if(!email.trim() && !password){
+    if(!email.trim() || !password){
         throw new apiError(404, "All fields are required")
     }
 
@@ -23,7 +23,7 @@ const loginUser = asyncHandler(async (request, response) => {
     const accessToken = await generateAccessToken(foundUser._id);
     const refreshToken = await generateRefreshToken(foundUser._id);
 
-    if(!accessToken && !refreshToken){
+    if(!accessToken || !refreshToken){
         throw new apiError(500, "Error in generating access and refresh token")
     }
 
