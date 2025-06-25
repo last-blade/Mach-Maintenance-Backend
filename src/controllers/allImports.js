@@ -7,6 +7,7 @@ import { User } from "../models/user.model.js";
 import { Asset } from "../models/asset.model.js";
 import { AssetCategory } from "../models/assetCategory.model.js";
 import { AssetBrand } from "../models/assetBrand.model.js";
+import { AssetSupplier } from "../models/assetSupplier.model.js";
 
 export {
     asyncHandler,
@@ -18,4 +19,5 @@ export {
     Asset,
     AssetCategory,
     AssetBrand,
+    AssetSupplier,
 }
