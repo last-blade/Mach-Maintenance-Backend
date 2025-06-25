@@ -59,6 +59,7 @@ const assetSchema = new Schema({
 
     assetStatus: {
         type: String,
+        enum: ["Working", "Idle", "Scrap"],
         required: true,
         trim: true,
     },
