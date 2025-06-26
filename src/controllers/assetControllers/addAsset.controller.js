@@ -3,22 +3,22 @@ import QRCode from "qrcode";
 
 const addAsset = asyncHandler(async (request, response) => {
     const {assetCategory, assetModelNo, assetName, assetCode, 
-        assetBrand, barcodeNo, invoiceNo, purchaseDate, 
-        price, specialAsset, assetStatus, supplier, assetLocation
+        assetBrand, assetBarcodeNo, assetInvoiceNo, assetPurchaseDate, 
+        assetPrice, specialAsset, assetStatus, assetSupplier, assetLocation
     } = request.body;
 
     if([assetCategory, assetModelNo, assetName, assetCode, 
-        assetBrand, purchaseDate, price, specialAsset, 
-        assetStatus, supplier, assetLocation].some(inputField => inputField === undefined || inputField.trim() === "")
+        assetBrand, assetPurchaseDate, assetPrice, specialAsset, 
+        assetStatus, assetSupplier, assetLocation].some(inputField => inputField === undefined || inputField.trim() === "")
     ){
         throw new apiError(404, "All mandatory fields are required to fill")
     }
 
     const newASSET = await Asset.create({
         assetCategory, assetModelNo, assetName, assetCode, assetBrand, 
-        barcodeNo: barcodeNo || "", 
-        invoiceNo: invoiceNo || "", 
-        purchaseDate, price, specialAsset, assetStatus, supplier, assetLocation,
+        assetBarcodeNo: assetBarcodeNo || "", 
+        assetInvoiceNo: assetInvoiceNo || "", 
+        assetPurchaseDate, assetPrice, specialAsset, assetStatus, assetSupplier, assetLocation,
         assetCreator: request.user.id,
     });
 
