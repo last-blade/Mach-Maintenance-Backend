@@ -2,7 +2,8 @@ import mongoose, { Schema } from "mongoose";
 
 const assetSchema = new Schema({
     assetCategory: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "AssetCategory",
         required: true,
         trim: true,
     },
@@ -22,29 +23,30 @@ const assetSchema = new Schema({
         trim: true,
     },
     assetBrand: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "AssetBrand",
         required: true,
         trim: true,
     },
 
-    barcodeNo: {
+    assetBarcodeNo: {
         type: String,
         required: false,
         trim: true,
     },
 
-    invoiceNo: {
+    assetInvoiceNo: {
         type: String,
         required: false,
         trim: true,
     },
 
-    purchaseDate: {
+    assetPurchaseDate: {
         type: Date,
         required: true,
     },
 
-    price: {
+    assetPrice: {
         type: String,
         required: true,
         trim: true,
@@ -64,8 +66,9 @@ const assetSchema = new Schema({
         trim: true,
     },
 
-    supplier: {
-        type: String,
+    assetSupplier: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "AssetSupplier",
         required: true,
         trim: true, 
     },
