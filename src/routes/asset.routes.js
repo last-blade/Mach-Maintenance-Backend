@@ -13,6 +13,10 @@ import { createAssetSupplier } from "../controllers/assetControllers/assetSuppli
 import { fetchAssetSuppliers } from "../controllers/assetControllers/assetSupplierControllers/fetchAssetSuppliers.controller.js";
 import { editAssetSupplier } from "../controllers/assetControllers/assetSupplierControllers/editAssetSupplier.controller.js";
 import { deleteAssetSupplier } from "../controllers/assetControllers/assetSupplierControllers/deleteAssetSupplier.controller.js";
+import { createAssetSpare } from "../controllers/assetControllers/assetSpareControllers/createAssetSpare.controller.js";
+import { fetchAssetSpare } from "../controllers/assetControllers/assetSpareControllers/fetchAssetSpare.controller.js";
+import { editAssetSpare } from "../controllers/assetControllers/assetSpareControllers/editAssetSpare.controller.js";
+import { deleteAssetSpare } from "../controllers/assetControllers/assetSpareControllers/deleteAssetSpare.controller.js";
 
 const router = Router();
 
@@ -21,11 +25,13 @@ router.route("/add-asset").post(authentication, addAsset);
 router.route("/add-asset-category").post(authentication, createAssetCategory);
 router.route("/add-asset-brand").post(authentication, createAssetBrand);
 router.route("/add-asset-supplier").post(authentication, createAssetSupplier);
+router.route("/add-asset-spare").post(authentication, createAssetSpare);
 
 //GET
 router.route("/asset-categories").get(authentication, fetchAssetCategories);
 router.route("/asset-brands").get(authentication, fetchAssetBrands);
 router.route("/asset-suppliers").get(authentication, fetchAssetSuppliers);
+router.route("/asset-spares").get(authentication, fetchAssetSpare);
 
 //PATCH
 
@@ -33,10 +39,12 @@ router.route("/asset-suppliers").get(authentication, fetchAssetSuppliers);
 router.route("/edit-asset-category/:assetCategoryId").put(authentication, editAssetCategory);
 router.route("/edit-asset-brand/:assetBrandId").put(authentication, editAssetBrand);
 router.route("/edit-asset-supplier/:assetSupplierId").put(authentication, editAssetSupplier);
+router.route("/edit-asset-spare/:assetSpareId").put(authentication, editAssetSpare);
 
 //DELETE
 router.route("/delete-asset-category/:assetCategoryId").delete(authentication, deleteAssetCategory);
 router.route("/delete-asset-brand/:assetBrandId").delete(authentication, deleteAssetBrand);
 router.route("/delete-asset-supplier/:assetSupplierId").delete(authentication, deleteAssetSupplier);
+router.route("/delete-asset-spare/:assetSpareId").delete(authentication, deleteAssetSpare);
 
 export default router;
