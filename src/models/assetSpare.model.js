@@ -1,20 +1,20 @@
 import mongoose, { Schema } from "mongoose";
 
 const assetSpareSchema = new Schema({
-    assetSpare: {
+    assetSpareName: {
         type: String,
         required: true,
         trim: true,
     },
 
-    assetCategory: {
-        type: mongoose.Schema.Type.ObjectId,
+    assetSpareCategory: {
+        type: mongoose.Schema.Types.ObjectId,
         ref: "AssetCategory",
         required: true,
         trim: true,
     },
 
-    assetSpecialSpare: {
+    isAssetSpecialSpare: {
         type: Boolean,
         default: false,
         required: true,
