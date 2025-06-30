@@ -12,13 +12,26 @@ const userSchema = new Schema({
         type: String,
         required: true,
         unique: true,
-        trime: true,
+        trim: true,
         lowercase: true,
     },
 
-    password: {
+    department: {
         type: String,
         required: true,
+        trim: true,
+    },
+
+    jobTitle: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+
+    shift: {
+        type: String,
+        required: true,
+        trim: true,
     },
 
     contactNumber: {
@@ -29,6 +42,18 @@ const userSchema = new Schema({
     address: {
         type: String,
         required: false,
+    },
+
+    accountType: {
+        type: String,
+        enum: ["HR Management", "TPM", "IE"],
+        required: true,
+        trim: true,
+    },
+
+    password: {
+        type: String,
+        required: true,
     },
 
     profileImage: {
