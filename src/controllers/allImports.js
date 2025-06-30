@@ -10,6 +10,7 @@ import { AssetBrand } from "../models/assetBrand.model.js";
 import { AssetSupplier } from "../models/assetSupplier.model.js";
 import { AssetSpare } from "../models/assetSpare.model.js";
 import { Employee } from "../models/employee.model.js";
+import { Department } from "../models/department.model.js";
 
 export {
     asyncHandler,
@@ -24,4 +25,5 @@ export {
     AssetSupplier,
     AssetSpare,
     Employee,
+    Department,
 }
