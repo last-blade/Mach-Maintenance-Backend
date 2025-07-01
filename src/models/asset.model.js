@@ -79,7 +79,8 @@ const assetSchema = new Schema({
     },
 
     assetLocation: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Location",
         required: true,
     },
 
