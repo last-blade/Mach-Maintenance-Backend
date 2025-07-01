@@ -1,4 +1,4 @@
-import { apiError, apiResponse, asyncHandler, Location } from "../../allImports.js";
+import { apiError, apiResponse, asyncHandler, Location } from "../../../allImports.js";
 
 const addLocation = asyncHandler(async (request, response) => {
     const {locationName, locationCode, isFactory} = request.body;
