@@ -101,14 +101,20 @@ const addParentLocation = asyncHandler(async (request, response) => {
     await Location.findByIdAndUpdate(oldPrentLocationId, {
         $pull: {
             children: locationId,
-        }
-    }, {new: true});
+        },
 
-    await Location.findByIdAndUpdate(oldPrentLocationId, {
         $push: {
             children: location._id,
         }
     }, {new: true});
+
+
+    //~ instead of writing two update calls, maine neeche wala code oopar wale mein hi likh diya i.e. (push wala). 
+    // await Location.findByIdAndUpdate(oldPrentLocationId, {
+    //     $push: {
+    //         children: location._id,
+    //     }
+    // }, {new: true});
 
     const updatedLocation = await Location.findById(oldPrentLocationId);
 
