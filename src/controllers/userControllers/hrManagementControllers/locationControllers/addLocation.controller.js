@@ -60,6 +60,7 @@ const addChildLocation = asyncHandler(async (request, response) => {
     const location = await Location.create({
       locationName,
       locationCode: locationCode.toUpperCase(),
+      locationCreator: request.user.id,
     });
 
     const updatedLocation = await Location.findByIdAndUpdate(locationId, {
