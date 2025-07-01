@@ -44,7 +44,14 @@ const locationSchema = new Schema({
       type: mongoose.Schema.Types.ObjectId,
       ref: "Location",
     }
-  ]
+  ],
+
+  locationCreator: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
+
 }, { timestamps: true });
 
 export const Location = mongoose.model("Location", locationSchema);
