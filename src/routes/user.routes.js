@@ -4,6 +4,7 @@ import { loginUser } from "../controllers/userControllers/loginUser.controller.j
 import { authentication } from "../middlewares/auth.middleware.js";
 import { addChildLocation, addLocation, addParentLocation } from "../controllers/userControllers/hrManagementControllers/locationControllers/addLocation.controller.js";
 import { getLocation } from "../controllers/userControllers/hrManagementControllers/locationControllers/getLocation.controller.js";
+import { getParentLocation } from "../controllers/userControllers/hrManagementControllers/locationControllers/getParentLocation.controller.js";
 
 const router = Router();
 
@@ -17,5 +18,6 @@ router.route("/hr/location/add-child-location").post(authentication, addChildLoc
 router.route("/hr/location/add-parent-location").post(authentication, addParentLocation);
 //Location Routes - GET
 router.route("/hr/location/get-location/:locationId").get(authentication, getLocation);
+router.route("/hr/location/get-parent-location").get(authentication, getParentLocation);
 
 export default router
