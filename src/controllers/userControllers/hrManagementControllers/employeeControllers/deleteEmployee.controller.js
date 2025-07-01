@@ -3,6 +3,10 @@ import { apiError, apiResponse, asyncHandler, Employee } from "../../../allImpor
 const deleteEmployee = asyncHandler(async (request, response) => {
     const {employeeId} = request.params;
 
+    if(!employeeId){
+        throw new apiError(400, "Employee ID not found")
+    }
+
     const foundEmployee = await Employee.findById(employeeId);
 
     if(!foundEmployee){
