@@ -20,6 +20,8 @@ const addLocation = asyncHandler(async (request, response) => {
 
 });
 
+
+// Add child location controller
 const addChildLocation = asyncHandler(async (request, response) => {
   const { locationName, locationCode, locationId } = request.body;
 
@@ -72,6 +74,8 @@ const addChildLocation = asyncHandler(async (request, response) => {
   }
 });
 
+
+// Add parent location controller
 const addParentLocation = asyncHandler(async (request, response) => {
     const { locationName, locationCode, locationId } = request.body;
 
@@ -152,7 +156,4 @@ const addParentLocation = asyncHandler(async (request, response) => {
 
 });
 
-export {addParentLocation}
-
-
-export{addLocation, addChildLocation}
+export {addLocation, addChildLocation, addParentLocation}
