@@ -1,4 +1,3 @@
-// models/Location.js
 import mongoose, { Schema } from "mongoose";
 
 const locationSchema = new Schema({
