@@ -11,6 +11,7 @@ const addLocation = asyncHandler(async (request, response) => {
         locationName, 
         locationCode: locationCode.toUpperCase(),
         isFactory: isFactory || false,
+        locationCreator: request.user.id
     });
 
     return response.status(201)
@@ -37,6 +38,7 @@ const addChildLocation = asyncHandler(async (request, response) => {
       locationName,
       locationCode: locationCode.toUpperCase(),
       locationParentId: locationId,
+      locationCreator: request.user.id,
     });
 
     await Location.findByIdAndUpdate(locationId, {
@@ -90,6 +92,7 @@ const addParentLocation = asyncHandler(async (request, response) => {
         locationName,
         locationCode,
         locationParentId: childLocation.locationParentId,
+        locationCreator: request.user.id,
     });
 
     const oldPrentLocationId = childLocation.locationParentId;
@@ -133,6 +136,7 @@ const addParentLocation = asyncHandler(async (request, response) => {
         const location = await Location.create({
             locationName,
             locationCode,
+            locationCreator: request.user.id,
         });
 
         await Location.findByIdAndUpdate(location?._id, {
