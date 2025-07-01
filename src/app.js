@@ -24,8 +24,10 @@ app.use(express.static("public"));
 //Importing Routes
 import userRoutes from "./routes/user.routes.js";
 import assetRoutes from "./routes/asset.routes.js";
+import hrRoutes from "./routes/hr.routes.js";
 
 app.use("/api/v1/user", userRoutes);
 app.use("/api/v1/asset", assetRoutes);
+app.use("/api/v1/hr", hrRoutes);
 
 export { app }
