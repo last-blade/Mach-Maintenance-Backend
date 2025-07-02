@@ -21,6 +21,8 @@ const router = Router();
 router.route("/register").post(registerUser);
 router.route("/login").post(loginUser);
 
+
+//---------------------------------------------------------------HR Routes------------------------------------------------------------------
 //~LOCATION-ROUTES
 //Location Routes - POST
 router.route("/hr/location/add-location").post(authentication, addLocation)
