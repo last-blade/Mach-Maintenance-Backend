@@ -19,6 +19,7 @@ import { editAssetSpare } from "../controllers/assetControllers/assetSpareContro
 import { deleteAssetSpare } from "../controllers/assetControllers/assetSpareControllers/deleteAssetSpare.controller.js";
 import { getAssets } from "../controllers/assetControllers/getAssets.controller.js";
 import { updateAssetLocation } from "../controllers/assetControllers/updateAssetLocation.controller.js";
+import { getAssetTransferHistory } from "../controllers/assetControllers/getAssetTransferHistory.controller.js";
 
 const router = Router();
 
@@ -35,6 +36,7 @@ router.route("/asset-brands").get(authentication, fetchAssetBrands);
 router.route("/asset-suppliers").get(authentication, fetchAssetSuppliers);
 router.route("/asset-spares").get(authentication, fetchAssetSpare);
 router.route("/assets").get(authentication, getAssets);
+router.route("/asset-transfer-history/:assetId").get(authentication, getAssetTransferHistory);
 
 //PATCH
 router.route("/change-asset-location/:assetId").patch(authentication, updateAssetLocation);
