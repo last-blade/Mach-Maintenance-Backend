@@ -1,4 +1,4 @@
-import { asyncHandler } from "../utils/asyncHandler,js";
+import { asyncHandler } from "../utils/asyncHandler.js";
 
 const authorizeRoles = (...allowedRoles) => {
     return asyncHandler(async (request, response, next) => {
