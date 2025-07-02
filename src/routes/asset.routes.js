@@ -20,6 +20,8 @@ import { deleteAssetSpare } from "../controllers/assetControllers/assetSpareCont
 import { getAssets } from "../controllers/assetControllers/getAssets.controller.js";
 import { updateAssetLocation } from "../controllers/assetControllers/updateAssetLocation.controller.js";
 import { getAssetTransferHistory } from "../controllers/assetControllers/getAssetTransferHistory.controller.js";
+import { createAssetMaintenance } from "../controllers/assetControllers/createAssetMaintenance.controller.js";
+import { getAssetMaintenance } from "../controllers/assetControllers/getAssetMaintenance.controller.js";
 
 const router = Router();
 
@@ -29,6 +31,7 @@ router.route("/add-asset-category").post(authentication, createAssetCategory);
 router.route("/add-asset-brand").post(authentication, createAssetBrand);
 router.route("/add-asset-supplier").post(authentication, createAssetSupplier);
 router.route("/add-asset-spare").post(authentication, createAssetSpare);
+router.route("create-asset-maintenance").post(authentication, createAssetMaintenance);
 
 //GET
 router.route("/asset-categories").get(authentication, fetchAssetCategories);
@@ -37,6 +40,8 @@ router.route("/asset-suppliers").get(authentication, fetchAssetSuppliers);
 router.route("/asset-spares").get(authentication, fetchAssetSpare);
 router.route("/assets").get(authentication, getAssets);
 router.route("/asset-transfer-history/:assetId").get(authentication, getAssetTransferHistory);
+router.route("/asset-maintenance").get(authentication, getAssetMaintenance);
+router.route("/asset=transfer-history").get(authentication, getAssetTransferHistory);
 
 //PATCH
 router.route("/change-asset-location/:assetId").patch(authentication, updateAssetLocation);
