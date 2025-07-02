@@ -36,7 +36,6 @@ router.route("/hr/edit-location/:locationId").put(authentication, editLocation);
 //Location Routes - DELETE
 router.route("/hr/location/delete-location/:locationId").delete(authentication, deleteLocation);
 
-
 //~DEPARTMENT-ROUTES
 //POST
 router.route("/hr/department/add-department").post(authentication, addDepartment);
