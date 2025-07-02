@@ -1,9 +1,10 @@
 import { apiError, apiResponse, Asset, asyncHandler, Location } from "../allImports.js";
 
 const updateAssetLocation = asyncHandler(async (request, response) => {
-    const {locationId, assetId, assetStatus} = request.body;
+    const {assetId} = request.params;
+    const {locationId, assetStatus} = request.body;
 
-    if(!locationId || !assetStatus || assetId){
+    if(!locationId || !assetStatus || !assetId){
         throw new apiError(400, "All fields are required")
     }
 
@@ -22,8 +23,9 @@ const updateAssetLocation = asyncHandler(async (request, response) => {
     const updatedAssetLocation = await Asset.findByIdAndUpdate(assetId, {
         $set: {
             assetLocation: locationId,
+            assetStatus,
         }
-    }, {new: true}).populate("assetLocation", "locationName locationCode");
+    }, {new: true}).populate("assetLocation", "locationName locationCode").select("-assetCreator -__v");
 
     return response.status(200)
     .json(
