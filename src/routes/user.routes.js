@@ -11,6 +11,10 @@ import { addDepartment } from "../controllers/userControllers/hrManagementContro
 import { fetchDepartment } from "../controllers/userControllers/hrManagementControllers/departmentControllers/fetchDepartment.controller.js";
 import { editDepartment } from "../controllers/userControllers/hrManagementControllers/departmentControllers/editDepartment.controller.js";
 import { deleteDepartment } from "../controllers/userControllers/hrManagementControllers/departmentControllers/deleteDepartment.controller.js";
+import { addEmployee } from "../controllers/userControllers/hrManagementControllers/employeeControllers/addEmployee.controller.js";
+import { getEmployees } from "../controllers/userControllers/hrManagementControllers/employeeControllers/getEmployees.controller.js";
+import { editEmployee } from "../controllers/userControllers/hrManagementControllers/employeeControllers/editEmployee.controller.js";
+import { deleteEmployee } from "../controllers/userControllers/hrManagementControllers/employeeControllers/deleteEmployee.controller.js";
 
 const router = Router();
 
@@ -40,5 +44,15 @@ router.route("/hr/department/departments").get(authentication, fetchDepartment);
 router.route("/hr/department/edit/:departmentId").get(authentication, editDepartment);
 //DELETE
 router.route("/hr/department/delete/:departmentId").get(authentication, deleteDepartment);
+
+//~EMPLOYEE-ROUTES
+//POST
+router.route("/hr/employee/add-employee").post(authentication, addEmployee);
+//GET
+router.route("/hr/employee/employees").get(authentication, getEmployees);
+//PUT
+router.route("/hr/employee/edit/:employeeId").get(authentication, editEmployee);
+//DELETE
+router.route("/hr/employee/:employeeId").get(authentication, deleteEmployee);
 
 export default router
