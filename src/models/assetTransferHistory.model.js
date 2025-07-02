@@ -19,6 +19,6 @@ const assetTransferHistorySchema = new Schema({
         required: true,
     },
 
-}, {timestamps});
+}, {timestamps: true});
 
 export const AssetTransferHistory = mongoose.model("AssetTransferHistory", assetTransferHistorySchema);
