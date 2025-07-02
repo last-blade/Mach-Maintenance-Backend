@@ -17,6 +17,7 @@ import { createAssetSpare } from "../controllers/assetControllers/assetSpareCont
 import { fetchAssetSpare } from "../controllers/assetControllers/assetSpareControllers/fetchAssetSpare.controller.js";
 import { editAssetSpare } from "../controllers/assetControllers/assetSpareControllers/editAssetSpare.controller.js";
 import { deleteAssetSpare } from "../controllers/assetControllers/assetSpareControllers/deleteAssetSpare.controller.js";
+import { getAssets } from "../controllers/assetControllers/getAssets.controller.js";
 
 const router = Router();
 
@@ -32,6 +33,7 @@ router.route("/asset-categories").get(authentication, fetchAssetCategories);
 router.route("/asset-brands").get(authentication, fetchAssetBrands);
 router.route("/asset-suppliers").get(authentication, fetchAssetSuppliers);
 router.route("/asset-spares").get(authentication, fetchAssetSpare);
+router.route("/assets").get(authentication, getAssets);
 
 //PATCH
 
