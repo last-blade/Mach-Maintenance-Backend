@@ -22,6 +22,8 @@ import { updateAssetLocation } from "../controllers/assetControllers/updateAsset
 import { getAssetTransferHistory } from "../controllers/assetControllers/getAssetTransferHistory.controller.js";
 import { createAssetMaintenance } from "../controllers/assetControllers/createAssetMaintenance.controller.js";
 import { getAssetMaintenance } from "../controllers/assetControllers/getAssetMaintenance.controller.js";
+import { deleteAsset } from "../controllers/assetControllers/deleteAsset.controller.js";
+import { getAsset } from "../controllers/assetControllers/getAsset.controller.js";
 
 const router = Router();
 
@@ -42,6 +44,7 @@ router.route("/assets").get(authentication, getAssets);
 router.route("/asset-transfer-history/:assetId").get(authentication, getAssetTransferHistory);
 router.route("/asset-maintenance").get(authentication, getAssetMaintenance);
 router.route("/asset=transfer-history").get(authentication, getAssetTransferHistory);
+router.route("/asset/:assetId").get(authentication, getAsset);
 
 //PATCH
 router.route("/change-asset-location/:assetId").patch(authentication, updateAssetLocation);
@@ -57,5 +60,6 @@ router.route("/delete-asset-category/:assetCategoryId").delete(authentication, d
 router.route("/delete-asset-brand/:assetBrandId").delete(authentication, deleteAssetBrand);
 router.route("/delete-asset-supplier/:assetSupplierId").delete(authentication, deleteAssetSupplier);
 router.route("/delete-asset-spare/:assetSpareId").delete(authentication, deleteAssetSpare);
+router.route("/delete/asset/:assetId").delete(authentication, deleteAsset);
 
 export default router;
