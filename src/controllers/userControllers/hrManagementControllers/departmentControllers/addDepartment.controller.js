@@ -1,4 +1,4 @@
-import {apiError, apiResponse, asyncHandler, Department,} from "../../../allImports";
+import {apiError, apiResponse, asyncHandler, Department,} from "../../../allImports.js";
 
 const addDepartment = asyncHandler(async (request, response) => {
   const { department } = request.body;
