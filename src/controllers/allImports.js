@@ -12,6 +12,7 @@ import { AssetSpare } from "../models/assetSpare.model.js";
 import { Employee } from "../models/employee.model.js";
 import { Department } from "../models/department.model.js";
 import { Location } from "../models/location.model.js";
+import { AssetTransferHistory } from "../models/assetTransferHistory.model.js";
 
 export {
     asyncHandler,
@@ -27,5 +28,6 @@ export {
     AssetSpare,
     Employee,
     Department,
-    Location
+    Location,
+    AssetTransferHistory,
 }
