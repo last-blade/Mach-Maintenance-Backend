@@ -1,4 +1,4 @@
-import { apiError, apiResponse, asyncHandler, Employee } from "../../../allImports";
+import { apiError, apiResponse, asyncHandler, Employee } from "../../../allImports.js";
 
 const deleteEmployee = asyncHandler(async (request, response) => {
     const {employeeId} = request.params;
