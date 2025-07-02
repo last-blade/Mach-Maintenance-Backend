@@ -84,6 +84,12 @@ const assetSchema = new Schema({
         required: true,
     },
 
+    underMaintenance: {
+        type: Boolean,
+        required: false,
+        default: false,
+    },
+
     assetCreator: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
