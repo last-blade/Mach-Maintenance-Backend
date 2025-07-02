@@ -6,6 +6,7 @@ import { addChildLocation, addLocation, addParentLocation } from "../controllers
 import { getLocation } from "../controllers/userControllers/hrManagementControllers/locationControllers/getLocation.controller.js";
 import { getParentLocation } from "../controllers/userControllers/hrManagementControllers/locationControllers/getParentLocation.controller.js";
 import { editLocation } from "../controllers/userControllers/hrManagementControllers/locationControllers/editLocation.controller.js";
+import { deleteLocation } from "../controllers/userControllers/hrManagementControllers/locationControllers/deleteLocation.controller.js";
 
 const router = Router();
 
@@ -22,5 +23,7 @@ router.route("/hr/location/get-location/:locationId").get(authentication, getLoc
 router.route("/hr/location/get-parent-location").get(authentication, getParentLocation);
 //Location Routes - PUT
 router.route("/hr/edit-location/:locationId").put(authentication, editLocation);
+//Location Routes - DELETE
+router.route("/hr/location/delete-location/:locationId").delete(authentication, deleteLocation);
 
 export default router
