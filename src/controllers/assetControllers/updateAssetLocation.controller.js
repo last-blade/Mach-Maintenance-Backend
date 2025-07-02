@@ -1,4 +1,4 @@
-import { apiError, apiResponse, Asset, asyncHandler, Location } from "../allImports.js";
+import { apiError, apiResponse, Asset, AssetTransferHistory, asyncHandler, Location } from "../allImports.js";
 
 const updateAssetLocation = asyncHandler(async (request, response) => {
     const {assetId} = request.params;
@@ -26,6 +26,13 @@ const updateAssetLocation = asyncHandler(async (request, response) => {
             assetStatus,
         }
     }, {new: true}).populate("assetLocation", "locationName locationCode").select("-assetCreator -__v");
+
+    await AssetTransferHistory.create({
+        assetLocationChangedBy: request.user.id,
+        assetOldLocation: foundAsset.assetLocation,
+        assetNewLocation: locationId,
+        assetId
+    });
 
     return response.status(200)
     .json(
