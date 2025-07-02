@@ -37,7 +37,7 @@ router.route("/asset-spares").get(authentication, fetchAssetSpare);
 router.route("/assets").get(authentication, getAssets);
 
 //PATCH
-router.route("/change-asset-location").patch(authentication, updateAssetLocation);
+router.route("/change-asset-location/:assetId").patch(authentication, updateAssetLocation);
 
 //PUT
 router.route("/edit-asset-category/:assetCategoryId").put(authentication, editAssetCategory);
