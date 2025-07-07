@@ -24,6 +24,7 @@ import { createAssetMaintenance } from "../controllers/assetControllers/createAs
 import { getAssetMaintenance } from "../controllers/assetControllers/getAssetMaintenance.controller.js";
 import { deleteAsset } from "../controllers/assetControllers/deleteAsset.controller.js";
 import { getAsset } from "../controllers/assetControllers/getAsset.controller.js";
+import { editAsset } from "../controllers/assetControllers/editAsset.controller.js";
 
 const router = Router();
 
@@ -50,6 +51,7 @@ router.route("/asset/:assetId").get(authentication, getAsset);
 router.route("/change-asset-location/:assetId").patch(authentication, updateAssetLocation);
 
 //PUT
+router.route("/edit-asset/:assetId").put(authentication, editAsset);
 router.route("/edit-asset-category/:assetCategoryId").put(authentication, editAssetCategory);
 router.route("/edit-asset-brand/:assetBrandId").put(authentication, editAssetBrand);
 router.route("/edit-asset-supplier/:assetSupplierId").put(authentication, editAssetSupplier);
