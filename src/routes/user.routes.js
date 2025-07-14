@@ -15,11 +15,13 @@ import { addEmployee } from "../controllers/userControllers/hrManagementControll
 import { getEmployees } from "../controllers/userControllers/hrManagementControllers/employeeControllers/getEmployees.controller.js";
 import { editEmployee } from "../controllers/userControllers/hrManagementControllers/employeeControllers/editEmployee.controller.js";
 import { deleteEmployee } from "../controllers/userControllers/hrManagementControllers/employeeControllers/deleteEmployee.controller.js";
+import { logoutUser } from "../controllers/userControllers/logoutUser.controller.js";
 
 const router = Router();
 
 router.route("/register").post(registerUser);
 router.route("/login").post(loginUser);
+router.route("/logout").post(logoutUser);
 
 
 //---------------------------------------------------------------HR Routes------------------------------------------------------------------
