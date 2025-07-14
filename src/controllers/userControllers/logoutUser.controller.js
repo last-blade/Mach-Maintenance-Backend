@@ -1,10 +1,7 @@
 import { apiError, apiResponse, asyncHandler, User } from "../allImports.js";
 
 const logoutUser = asyncHandler(async (request, response) => {
-
-    const user = request?.user;
-
-    const userId = user?.id;
+    const userId = request.user.id;
 
     const foundUser = await User.findById(userId);
 
