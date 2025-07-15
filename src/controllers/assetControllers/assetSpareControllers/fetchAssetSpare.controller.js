@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import { apiError, apiResponse, AssetSpare, asyncHandler } from "../../allImports.js";
 
 const fetchAssetSpare = asyncHandler(async (request, response) => {
