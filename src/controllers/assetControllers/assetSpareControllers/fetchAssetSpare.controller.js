@@ -10,6 +10,30 @@ const fetchAssetSpare = asyncHandler(async (request, response) => {
     },
 
     {
+      $lookup: {
+        from: "assetcategories",
+        localField: "assetSpareCategory",
+        foreignField: "_id",
+        as: "assetSpareCategory"
+      }
+    },
+
+    {
+      $unwind: "$assetSpareCategory",
+    },
+
+    {
+      $project: {
+        _id: 1,
+        assetSpareName: 1,
+        isAssetSpecialSpare: 1,
+        createdAt: 1,
+        updatedAt: 1,
+        "assetSpareCategory.assetCategory": 1,
+      },
+    },
+
+    {
       $sort: {
         assetSpareName: 1,
       },
