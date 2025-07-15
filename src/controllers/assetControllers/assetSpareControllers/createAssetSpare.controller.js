@@ -3,7 +3,7 @@ import { apiError, apiResponse, AssetSpare, asyncHandler } from "../../allImport
 const createAssetSpare = asyncHandler(async (request, response) => {
     const {assetSpareName, assetSpareCategory, isAssetSpecialSpare} = request.body;
 
-    if([assetSpareName, assetSpareCategory, isAssetSpecialSpare].some(inputField => inputField === undefined || inputField.trim() === "")){
+    if([assetSpareName, assetSpareCategory, isAssetSpecialSpare].some(inputField => inputField === undefined || inputField.trim === "")){
         throw new apiError(404, "All fields are required")
     }
 
