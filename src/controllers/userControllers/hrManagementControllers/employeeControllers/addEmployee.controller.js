@@ -8,7 +8,6 @@ const addEmployee = asyncHandler(async (request, response) => {
     department,
     jobTitle,
     shift,
-    accountType,
     address,
     password,
     confirmPassword,
@@ -22,7 +21,6 @@ const addEmployee = asyncHandler(async (request, response) => {
       department,
       jobTitle,
       shift,
-      accountType,
       password,
       confirmPassword,
     ].some((inputField) => inputField === undefined || inputField.trim === "")
@@ -34,13 +32,13 @@ const addEmployee = asyncHandler(async (request, response) => {
     throw new apiError(400, "Passwords do not match");
   }
 
-  const foundUser = await User.findOne({ email });
+  const foundEmployee = await Employee.findOne({ email });
 
-  if (foundUser) {
-    throw new apiError(409, "User with this email already exists");
+  if (foundEmployee) {
+    throw new apiError(409, "Employee with this email already exists");
   }
 
-  await User.create({
+  await Employee.create({
     fullName,
     email,
     contactNumber,
@@ -48,30 +46,24 @@ const addEmployee = asyncHandler(async (request, response) => {
     jobTitle,
     shift,
     address,
-    accountType,
     password,
   });
 
-  const foundNewlyCreatedUser = await User.findOne({ email }).select(
+  const foundNewlyCreatedEmployee = await Employee.findOne({ email }).select(
     "-password -refreshToken -__v -_id"
   );
 
-  if (!foundNewlyCreatedUser) {
+  if (!foundNewlyCreatedEmployee) {
     throw new apiError(500, "Something went wrong, try again");
   }
-
-  await Employee.create({
-    employee: foundNewlyCreatedUser._id,
-    employeeCreator: request.user.id,
-  });
 
   return response
     .status(201)
     .json(
       new apiResponse(
         201,
-        foundNewlyCreatedUser,
-        "User registered successfully"
+        foundNewlyCreatedEmployee,
+        "Employee registered successfully"
       )
     );
 });
