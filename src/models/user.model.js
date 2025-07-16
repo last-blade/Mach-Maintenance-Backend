@@ -46,7 +46,7 @@ const userSchema = new Schema({
 
     accountType: {
         type: String,
-        enum: ["Admin", "HR Management", "TPM", "IE"],
+        enum: ["Admin", "HR"],
         required: true,
         trim: true,
     },
