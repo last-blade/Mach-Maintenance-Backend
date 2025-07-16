@@ -1,4 +1,4 @@
-import { apiError, apiResponse, asyncHandler, Employee } from "../allImports.js";
+import { apiError, apiResponse, asyncHandler, Employee } from "../../../allImports.js";
 
 const logoutEmployee = asyncHandler(async (request, response) => {
     const userId = request.user.id;
