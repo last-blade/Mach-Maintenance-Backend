@@ -27,11 +27,6 @@ const userSchema = new Schema({
         required: true,
     },
 
-    address: {
-        type: String,
-        required: false,
-    },
-
     accountType: {
         type: String,
         enum: ["Admin", "HR"],
