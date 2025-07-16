@@ -16,21 +16,9 @@ const userSchema = new Schema({
         lowercase: true,
     },
 
-    department: {
-        type: String,
-        required: true,
-        trim: true,
-    },
-
     jobTitle: {
         type: String,
-        required: true,
-        trim: true,
-    },
-
-    shift: {
-        type: String,
-        required: true,
+        required: false,
         trim: true,
     },
 
