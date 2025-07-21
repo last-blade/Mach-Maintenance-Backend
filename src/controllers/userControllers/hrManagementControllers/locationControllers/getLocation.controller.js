@@ -8,7 +8,7 @@ const getLocation = asyncHandler(async (request, response) => {
         locationCreator: request.user.id,
         _id: locationId,
         // isFactory: true,
-    }).select("-locationCreator");
+    }).populate("children", "locationName locationCode").select("-locationCreator");
 
     return response.status(200)
     .json(
