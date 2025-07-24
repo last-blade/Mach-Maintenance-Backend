@@ -4,6 +4,9 @@ const getAssets = asyncHandler(async (request, response) => {
     const assets = await Asset.find({
         assetCreator: request.user.id,
     }).populate("assetLocation", "locationName locationCode")
+    .populate("assetBrand", "assetBrand assetBrandDescription")
+    .populate("assetCategory", "assetCategory depreciationPercentage")
+    .populate("assetSupplier", "assetSupplierName assetCompanyName")
 
     return response.status(200)
     .json(
