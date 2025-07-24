@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import {apiError, apiResponse, AssetBrand, asyncHandler} from "../../allImports.js";
+import {apiResponse, AssetBrand, asyncHandler} from "../../allImports.js";
 
 const fetchAssetBrands = asyncHandler(async (request, response) => {
   const brands = await AssetBrand.aggregate([
@@ -20,8 +20,11 @@ const fetchAssetBrands = asyncHandler(async (request, response) => {
     },
   ]);
 
-  if (brands.length === 0) {
-    throw new apiError(404, "No asset brand found");
+  if (spares.length === 0) {
+    return response.status(200)
+    .json(
+      new apiResponse(200, {}, "No asset brand found")
+    );
   }
 
   return response
