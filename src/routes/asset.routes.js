@@ -25,6 +25,7 @@ import { getAssetMaintenance } from "../controllers/assetControllers/getAssetMai
 import { deleteAsset } from "../controllers/assetControllers/deleteAsset.controller.js";
 import { getAsset } from "../controllers/assetControllers/getAsset.controller.js";
 import { editAsset } from "../controllers/assetControllers/editAsset.controller.js";
+import { createAssetMaintenanceRequest } from "../controllers/assetControllers/createAssetMaintenanceRequest.controller.js";
 
 const router = Router();
 
@@ -35,6 +36,7 @@ router.route("/add-asset-brand").post(authentication, createAssetBrand);
 router.route("/add-asset-supplier").post(authentication, createAssetSupplier);
 router.route("/add-asset-spare").post(authentication, createAssetSpare);
 router.route("create-asset-maintenance").post(authentication, createAssetMaintenance);
+router.route("/raise-maintenance-request").post(authentication, createAssetMaintenanceRequest);
 
 //GET
 router.route("/asset-categories").get(authentication, fetchAssetCategories);
