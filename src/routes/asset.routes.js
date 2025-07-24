@@ -35,7 +35,7 @@ router.route("/add-asset-category").post(authentication, createAssetCategory);
 router.route("/add-asset-brand").post(authentication, createAssetBrand);
 router.route("/add-asset-supplier").post(authentication, createAssetSupplier);
 router.route("/add-asset-spare").post(authentication, createAssetSpare);
-router.route("create-asset-maintenance").post(authentication, createAssetMaintenance);
+router.route("/assign-maintenance-mechanic").post(authentication, createAssetMaintenance);
 router.route("/raise-maintenance-request").post(authentication, createAssetMaintenanceRequest);
 
 //GET
