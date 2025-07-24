@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
 import {
-  apiError,
   apiResponse,
   AssetCategory,
   asyncHandler,
@@ -25,8 +24,11 @@ const fetchAssetCategories = asyncHandler(async (request, response) => {
     },
   ]);
 
-  if (categories.length === 0) {
-    throw new apiError(404, "No asset category found");
+  if (spares.length === 0) {
+    return response.status(200)
+    .json(
+      new apiResponse(200, {}, "No asset category found")
+    );
   }
 
   return response
