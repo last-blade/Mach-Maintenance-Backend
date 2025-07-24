@@ -45,7 +45,10 @@ const fetchAssetSpare = asyncHandler(async (request, response) => {
   ]);
 
   if (spares.length === 0) {
-    throw new apiError(404, "No asset spares found");
+    return response.status(200)
+    .json(
+      new apiResponse(200, {}, "No asset spares found")
+    );
   }
 
   return response
