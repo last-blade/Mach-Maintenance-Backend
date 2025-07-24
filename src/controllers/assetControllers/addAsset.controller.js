@@ -14,27 +14,25 @@ const addAsset = asyncHandler(async (request, response) => {
         throw new apiError(404, "All mandatory fields are required to fill")
     }
 
-    const newASSET = await Asset.create({
-        assetCategory, assetModelNo, assetName, assetCode, assetBrand, 
-        assetBarcodeNo: assetBarcodeNo || "", 
-        assetInvoiceNo: assetInvoiceNo || "", 
-        assetPurchaseDate, assetPrice, specialAsset, assetStatus, assetSupplier, assetLocation,
-        assetCreator: request.user.id,
-    });
-
     const qrData = `Asset ID: ${newASSET._id}
                     Asset Code: ${newASSET.assetCode}
                     Asset Name: ${newASSET.assetName}
                     Brand: ${newASSET.assetBrand} | ID: ${newASSET._id}`
     ;
-    const qrCodeDataUri = await QRCode.toDataURL(qrData); 
+    const qrCodeDataUri = await QRCode.toDataURL(qrData);
+
+    const newASSET = await Asset.create({
+        assetCategory, assetModelNo, assetName, assetCode, assetBrand, 
+        assetBarcodeNo: assetBarcodeNo || "", 
+        assetInvoiceNo: assetInvoiceNo || "", 
+        assetPurchaseDate, assetPrice, specialAsset, assetStatus, assetSupplier, assetLocation,
+        assetQrCodeUrl: qrCodeDataUri,
+        assetCreator: request.user.id,
+    }); 
 
     return response.status(201)
     .json(
-        new apiResponse(201, {
-            asset: newASSET, 
-            qrCode: qrCodeDataUri
-        }, "Asset added")
+        new apiResponse(201, { asset: newASSET, }, "Asset added")
     )
 
 });
