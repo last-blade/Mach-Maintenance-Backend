@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { apiError, apiResponse, AssetSpare, asyncHandler } from "../../allImports.js";
+import { apiResponse, AssetSpare, asyncHandler } from "../../allImports.js";
 
 const fetchAssetSpare = asyncHandler(async (request, response) => {
     const spares = await AssetSpare.aggregate([
@@ -47,7 +47,7 @@ const fetchAssetSpare = asyncHandler(async (request, response) => {
   if (spares.length === 0) {
     return response.status(200)
     .json(
-      new apiResponse(200, {}, "No asset spares found")
+      new apiResponse(200, {}, "No asset spare found")
     );
   }
 
