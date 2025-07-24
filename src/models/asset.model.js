@@ -90,6 +90,11 @@ const assetSchema = new Schema({
         default: false,
     },
 
+    assetQrCodeUrl: {
+        type: String,
+        required: true,
+    },
+
     assetCreator: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
