@@ -40,7 +40,7 @@ const addAsset = asyncHandler(async (request, response) => {
 
     return response.status(201)
     .json(
-        new apiResponse(201, { asset: newASSET, }, "Asset added")
+        new apiResponse(201, { asset: foundAsset, }, "Asset added")
     )
 
 });
