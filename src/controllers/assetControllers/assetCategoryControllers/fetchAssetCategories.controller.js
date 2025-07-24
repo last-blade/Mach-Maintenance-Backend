@@ -24,7 +24,7 @@ const fetchAssetCategories = asyncHandler(async (request, response) => {
     },
   ]);
 
-  if (spares.length === 0) {
+  if (categories.length === 0) {
     return response.status(200)
     .json(
       new apiResponse(200, {}, "No asset category found")
