@@ -92,7 +92,7 @@ const assetSchema = new Schema({
 
     assetQrCodeUrl: {
         type: String,
-        required: true,
+        required: false,
     },
 
     assetCreator: {
