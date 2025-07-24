@@ -43,12 +43,12 @@ const assetSchema = new Schema({
 
     assetPurchaseDate: {
         type: Date,
-        required: true,
+        required: false,
     },
 
     assetPrice: {
         type: String,
-        required: true,
+        required: false,
         trim: true,
     },
 
