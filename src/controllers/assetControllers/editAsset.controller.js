@@ -44,9 +44,9 @@ const editAsset = asyncHandler(async(request, response) => {
     updatedAsset.assetQrCodeUrl = qrCodeDataUri;
     await updatedAsset.save({validateBeforeSave: false});
 
-    return response.status(201)
+    return response.status(200)
     .json(
-        new apiResponse(201, {
+        new apiResponse(200, {
             asset: updatedAsset, 
         }, "Asset updated")
     )
