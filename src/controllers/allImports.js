@@ -14,6 +14,7 @@ import { Department } from "../models/department.model.js";
 import { Location } from "../models/location.model.js";
 import { AssetTransferHistory } from "../models/assetTransferHistory.model.js";
 import { AssetMaintenance } from "../models/assetMaintenance.model.js";
+import {AssetMaintenanceRequest} from "../models/assetMaintenanceRequest.model.js";
 
 export {
     asyncHandler,
@@ -32,4 +33,5 @@ export {
     Location,
     AssetTransferHistory,
     AssetMaintenance,
+    AssetMaintenanceRequest
 }
