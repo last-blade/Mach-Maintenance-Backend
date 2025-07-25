@@ -1,4 +1,4 @@
-import { apiError, apiResponse, Asset, asyncHandler } from "../allImports.js";
+import { apiError, apiResponse, Asset, AssetMaintenanceRequest, asyncHandler } from "../allImports.js";
 
 const createAssetMaintenanceRequest = asyncHandler(async (request, response) => {
     const {assetId} = request.params;
@@ -21,12 +21,16 @@ const createAssetMaintenanceRequest = asyncHandler(async (request, response) => 
     await Asset.findByIdAndUpdate(assetId, {
         $set: {
             underMaintenance: true,
-            remark,
         }
     }, {new: true});
 
+    const assetMaintenanceRequest = await AssetMaintenanceRequest.create({
+        remark,
+        assetId,
+    })
+
     return response.status(200).json(
-        new apiResponse(200, {}, "Asset maintenance request created")
+        new apiResponse(200, assetMaintenanceRequest, "Asset maintenance request created")
     )
 
 });
