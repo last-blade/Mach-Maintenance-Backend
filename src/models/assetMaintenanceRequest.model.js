@@ -9,20 +9,34 @@ const assetMaintenanceRequestSchema = new Schema({
 
     assetMaintenanceRequestId: {
         type: String,
-        required: true,
         trim: true,
+        unique: true,
+        default: null,
     },
 
     remark: {
         type: String,
         trim: true,
         required: true,
+    },
+
+    assetMaintenanceRequestCreator: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+    },
+
+    creatorModel: {
+        type: String,
+        enum: ["User", "Employee"],
+        required: true,
     }
 
 }, {timestamps: true});
 
 assetMaintenanceRequestSchema.pre("save", async function(next){
-    this.assetMaintenanceRequestId = "MNTR" + this._id
+    if (!this.assetMaintenanceRequestId) {
+        this.assetMaintenanceRequestId = "MNTR" + this._id;
+    }
     next();
 })
 
