@@ -90,12 +90,6 @@ const assetSchema = new Schema({
         default: false,
     },
 
-    remark: {
-        type: String,
-        required: false,
-        trim: true,
-    },
-
     assetQrCodeUrl: {
         type: String,
         required: false,
