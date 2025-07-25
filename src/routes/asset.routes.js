@@ -46,7 +46,7 @@ router.route("/asset-spares").get(authentication, fetchAssetSpare);
 router.route("/assets").get(authentication, getAssets);
 router.route("/asset-transfer-history/:assetId").get(authentication, getAssetTransferHistory);
 router.route("/asset-maintenance").get(authentication, getAssetMaintenance);
-router.route("/asset=transfer-history").get(authentication, getAssetTransferHistory);
+router.route("/asset-transfer-history").get(authentication, getAssetTransferHistory);
 router.route("/asset/:assetId").get(authentication, getAsset);
 
 //PATCH
