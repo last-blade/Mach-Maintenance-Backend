@@ -2,9 +2,14 @@ import { apiError, apiResponse, Asset, asyncHandler } from "../allImports.js";
 
 const createAssetMaintenanceRequest = asyncHandler(async (request, response) => {
     const {assetId} = request.params;
+    const {remark} = request.body;
 
     if(!assetId){
         throw new apiError(400, "Asset ID is required")
+    }
+
+    if(!remark){
+        throw new apiError(400, "Remark is required")
     }
 
     const foundAsset = await Asset(assetId);
@@ -14,7 +19,10 @@ const createAssetMaintenanceRequest = asyncHandler(async (request, response) => 
     }
 
     await Asset.findByIdAndUpdate(assetId, {
-        underMaintenance: true,
+        $set: {
+            underMaintenance: true,
+            remark,
+        }
     }, {new: true});
 
     return response.status(200).json(
