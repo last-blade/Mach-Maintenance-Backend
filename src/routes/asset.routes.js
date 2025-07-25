@@ -64,6 +64,6 @@ router.route("/delete-asset-category/:assetCategoryId").delete(authentication, d
 router.route("/delete-asset-brand/:assetBrandId").delete(authentication, deleteAssetBrand);
 router.route("/delete-asset-supplier/:assetSupplierId").delete(authentication, deleteAssetSupplier);
 router.route("/delete-asset-spare/:assetSpareId").delete(authentication, deleteAssetSpare);
-router.route("/delete/asset/:assetId").delete(authentication, deleteAsset);
+router.route("/delete-asset/:assetId").delete(authentication, deleteAsset);
 
 export default router;
