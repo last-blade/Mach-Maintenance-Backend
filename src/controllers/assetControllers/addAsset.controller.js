@@ -36,7 +36,7 @@ const addAsset = asyncHandler(async (request, response) => {
     const qrCodeDataUri = await QRCode.toDataURL(qrData);
 
     foundAsset.assetQrCodeUrl = qrCodeDataUri;
-    foundAsset.save({validateBeforeSave: false});
+    await foundAsset.save({validateBeforeSave: false});
 
     return response.status(201)
     .json(
