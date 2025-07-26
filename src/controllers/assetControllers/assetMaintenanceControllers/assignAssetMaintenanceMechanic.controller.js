@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import {
   apiError,
   apiResponse,
@@ -11,10 +10,10 @@ import { isValidObjectId } from "../../../utils/isValidObjectId.js";
 
 const assignAssetMaintenanceMechanic = asyncHandler(
   async (request, response) => {
-    const { assetId, mechanicId, remarks } = request.body;
+    const { assetId, mechanicId } = request.body;
 
     if (
-      [assetId, mechanicId, remarks].some(
+      [assetId, mechanicId].some(
         (inputField) => inputField === undefined || inputField.trim() === ""
       )
     ) {
@@ -41,23 +40,18 @@ const assignAssetMaintenanceMechanic = asyncHandler(
       assetId,
     });
 
-    if (foundAssetUnderMaintenance) {
-      throw new apiError(400, "Asset already in maintenance");
+    if (foundAssetUnderMaintenance.length > 0) {
+      throw new apiError(400, "Mechanic is already assigned");
+    }
+
+    if(!foundAsset.underMaintenance){
+        throw new apiError(400, "Create a maintenance request first")
     }
 
     const createdMaintenance = await AssetMaintenance.create({
-      remarks,
       mechanic: mechanicId,
       assetId,
     });
-
-    await Asset.findByIdAndUpdate(
-      assetId,
-      {
-        underMaintenance: true,
-      },
-      { new: true }
-    );
 
     return response
       .status(201)
@@ -65,7 +59,7 @@ const assignAssetMaintenanceMechanic = asyncHandler(
         new apiResponse(
           201,
           createdMaintenance,
-          `${foundAsset.assetName} is under maintenance`
+          `Mechanic assigned to ${foundAsset.assetName}`
         )
       );
   }
