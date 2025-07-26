@@ -20,13 +20,14 @@ import { deleteAssetSpare } from "../controllers/assetControllers/assetSpareCont
 import { getAssets } from "../controllers/assetControllers/getAssets.controller.js";
 import { updateAssetLocation } from "../controllers/assetControllers/updateAssetLocation.controller.js";
 import { getAssetTransferHistory } from "../controllers/assetControllers/getAssetTransferHistory.controller.js";
-import { getAssetMaintenance } from "../controllers/assetControllers/getAssetMaintenance.controller.js";
 import { deleteAsset } from "../controllers/assetControllers/deleteAsset.controller.js";
 import { getAsset } from "../controllers/assetControllers/getAsset.controller.js";
 import { editAsset } from "../controllers/assetControllers/editAsset.controller.js";
-import { createAssetMaintenanceRequest } from "../controllers/assetControllers/createAssetMaintenanceRequest.controller.js";
 import { getAssetDetails } from "../controllers/assetControllers/getAssetDetails.controller.js";
-import { assignAssetMaintenanceMechanic } from "../controllers/assetControllers/assignAssetMaintenanceMechanic.controller.js";
+import { assignAssetMaintenanceMechanic } from "../controllers/assetControllers/assetMaintenanceControllers/assignAssetMaintenanceMechanic.controller.js";
+import { createAssetMaintenanceRequest } from "../controllers/assetControllers/assetMaintenanceControllers/createAssetMaintenanceRequest.controller.js";
+import { getAssetMaintenance } from "../controllers/assetControllers/assetMaintenanceControllers/getAssetMaintenance.controller.js";
+
 
 const router = Router();
 
