@@ -9,7 +9,7 @@ import {
 const createAssetMaintenanceRequest = asyncHandler(
   async (request, response) => {
     const { assetId } = request.params;
-    const { remark } = request.body;
+    const { remark, priority } = request.body;
     console.log(request.user);
 
     if (!assetId) {
@@ -39,6 +39,7 @@ const createAssetMaintenanceRequest = asyncHandler(
     const assetMaintenanceRequest = await AssetMaintenanceRequest.create({
       remark,
       assetId,
+      priority,
       assetMaintenanceRequestCreator: request.user.id,
       creatorModel:
         request.user.accountType === "Admin" || "HR" ? "User" : "Employee",
