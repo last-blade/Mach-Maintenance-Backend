@@ -20,13 +20,13 @@ import { deleteAssetSpare } from "../controllers/assetControllers/assetSpareCont
 import { getAssets } from "../controllers/assetControllers/getAssets.controller.js";
 import { updateAssetLocation } from "../controllers/assetControllers/updateAssetLocation.controller.js";
 import { getAssetTransferHistory } from "../controllers/assetControllers/getAssetTransferHistory.controller.js";
-import { createAssetMaintenance } from "../controllers/assetControllers/createAssetMaintenance.controller.js";
 import { getAssetMaintenance } from "../controllers/assetControllers/getAssetMaintenance.controller.js";
 import { deleteAsset } from "../controllers/assetControllers/deleteAsset.controller.js";
 import { getAsset } from "../controllers/assetControllers/getAsset.controller.js";
 import { editAsset } from "../controllers/assetControllers/editAsset.controller.js";
 import { createAssetMaintenanceRequest } from "../controllers/assetControllers/createAssetMaintenanceRequest.controller.js";
 import { getAssetDetails } from "../controllers/assetControllers/getAssetDetails.controller.js";
+import { assignAssetMaintenanceMechanic } from "../controllers/assetControllers/assignAssetMaintenanceMechanic.controller.js";
 
 const router = Router();
 
@@ -36,7 +36,7 @@ router.route("/add-asset-category").post(authentication, createAssetCategory);
 router.route("/add-asset-brand").post(authentication, createAssetBrand);
 router.route("/add-asset-supplier").post(authentication, createAssetSupplier);
 router.route("/add-asset-spare").post(authentication, createAssetSpare);
-router.route("/assign-maintenance-mechanic").post(authentication, createAssetMaintenance);
+router.route("/assign-maintenance-mechanic").post(authentication, assignAssetMaintenanceMechanic);
 router.route("/raise-maintenance-request/:assetId").post(authentication, createAssetMaintenanceRequest);
 
 //GET

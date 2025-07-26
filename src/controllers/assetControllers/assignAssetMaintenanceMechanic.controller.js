@@ -1,6 +1,6 @@
 import { apiError, apiResponse, Asset, AssetMaintenance, asyncHandler, User } from "../allImports.js";
 
-const createAssetMaintenance = asyncHandler(async (request, response) => {
+const assignAssetMaintenanceMechanic = asyncHandler(async (request, response) => {
     const {assetId, mechanicId, remarks} = request.body;
 
     if([assetId, mechanicId, remarks].some(inputField => inputField === undefined || inputField.trim() === "")){
@@ -44,4 +44,4 @@ const createAssetMaintenance = asyncHandler(async (request, response) => {
 
 });
 
-export {createAssetMaintenance}
+export {assignAssetMaintenanceMechanic}
