@@ -27,6 +27,8 @@ import { getAssetDetails } from "../controllers/assetControllers/getAssetDetails
 import { assignAssetMaintenanceMechanic } from "../controllers/assetControllers/assetMaintenanceControllers/assignAssetMaintenanceMechanic.controller.js";
 import { createAssetMaintenanceRequest } from "../controllers/assetControllers/assetMaintenanceControllers/createAssetMaintenanceRequest.controller.js";
 import { getAssetMaintenance } from "../controllers/assetControllers/assetMaintenanceControllers/getAssetMaintenance.controller.js";
+import { getUnderMaintenanceAssets } from "../controllers/assetControllers/assetMaintenanceControllers/getUnderMaintenanceAssets.controller.js";
+import { getAllAssetsUnderMaintenance } from "../controllers/assetControllers/assetMaintenanceControllers/getAllAssetsUnderMaintenance.controller.js";
 
 
 const router = Router();
@@ -51,6 +53,8 @@ router.route("/asset-maintenance").get(authentication, getAssetMaintenance);
 router.route("/asset-transfer-history").get(authentication, getAssetTransferHistory);
 router.route("/asset/:assetId").get(authentication, getAsset);
 router.route("/asset-history/:assetId").get(authentication, getAssetDetails);
+// router.route("/under-maintenance").get(authentication, getUnderMaintenanceAssets);
+router.route("/under-maintenance").get(authentication, getAllAssetsUnderMaintenance);
 
 //PATCH
 router.route("/change-asset-location/:assetId").patch(authentication, updateAssetLocation);
