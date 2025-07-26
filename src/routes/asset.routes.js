@@ -53,7 +53,7 @@ router.route("/asset-maintenance").get(authentication, getAssetMaintenance);
 router.route("/asset-transfer-history").get(authentication, getAssetTransferHistory);
 router.route("/asset/:assetId").get(authentication, getAsset);
 router.route("/asset-history/:assetId").get(authentication, getAssetDetails);
-// router.route("/under-maintenance").get(authentication, getUnderMaintenanceAssets);
+router.route("/under-maintenance-with-mechanic").get(authentication, getUnderMaintenanceAssets);
 router.route("/under-maintenance").get(authentication, getAllAssetsUnderMaintenance);
 
 //PATCH
