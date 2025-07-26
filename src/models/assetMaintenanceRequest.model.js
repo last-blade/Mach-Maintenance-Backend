@@ -14,6 +14,12 @@ const assetMaintenanceRequestSchema = new Schema({
         default: null,
     },
 
+    priority: {
+        type: String,
+        required: true,
+        trim: true,
+    },
+
     remark: {
         type: String,
         trim: true,
