@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import {
   apiError,
   apiResponse,
@@ -6,6 +7,7 @@ import {
   asyncHandler,
   User,
 } from "../../allImports.js";
+import { isValidObjectId } from "../../../utils/isValidObjectId.js";
 
 const assignAssetMaintenanceMechanic = asyncHandler(
   async (request, response) => {
@@ -17,6 +19,10 @@ const assignAssetMaintenanceMechanic = asyncHandler(
       )
     ) {
       throw new apiError(400, "All fields are required");
+    }
+
+    if(!isValidObjectId(mechanicId)){
+        throw new apiError(400, "Invalid mechanic ID")
     }
 
     const foundAsset = await Asset.findById(assetId);
