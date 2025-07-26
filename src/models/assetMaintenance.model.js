@@ -4,7 +4,7 @@ const assetMaintenanceSchema = new Schema({
 
     maintenanceId: {
         type: String,
-        required: true,
+        required: false,
         trim: true,
         unique: true,
     },
@@ -24,7 +24,7 @@ const assetMaintenanceSchema = new Schema({
 }, {timestamps: true});
 
 assetMaintenanceSchema.pre("save", async function(next){
-    if(this.maintenanceId){
+    if(!this.maintenanceId){
         this.maintenanceId = "MNTC" + this._id
     }
 
