@@ -4,7 +4,7 @@ import {
   Asset,
   AssetMaintenanceRequest,
   asyncHandler,
-} from "../../allImports.js";
+} from "../../../allImports.js";
 
 const createAssetMaintenanceRequest = asyncHandler(
   async (request, response) => {

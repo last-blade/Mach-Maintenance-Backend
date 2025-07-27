@@ -25,7 +25,7 @@ import { getAsset } from "../controllers/assetControllers/getAsset.controller.js
 import { editAsset } from "../controllers/assetControllers/editAsset.controller.js";
 import { getAssetDetails } from "../controllers/assetControllers/getAssetDetails.controller.js";
 import { assignAssetMaintenanceMechanic } from "../controllers/assetControllers/assetMaintenanceControllers/Supervisor/assignAssetMaintenanceMechanic.controller.js";
-import { createAssetMaintenanceRequest } from "../controllers/assetControllers/assetMaintenanceControllers/createAssetMaintenanceRequest.controller.js";
+import { createAssetMaintenanceRequest } from "../controllers/assetControllers/assetMaintenanceControllers/MaintenanceRequestor/createAssetMaintenanceRequest.controller.js";
 import { getAssetMaintenance } from "../controllers/assetControllers/assetMaintenanceControllers/getAssetMaintenance.controller.js";
 import { getUnderMaintenanceAssetsWithMechanic } from "../controllers/assetControllers/assetMaintenanceControllers/getUnderMaintenanceAssetsWithMechanic.controller.js";
 import { getAllAssetsUnderMaintenance } from "../controllers/assetControllers/assetMaintenanceControllers/getAllAssetsUnderMaintenance.controller.js";
