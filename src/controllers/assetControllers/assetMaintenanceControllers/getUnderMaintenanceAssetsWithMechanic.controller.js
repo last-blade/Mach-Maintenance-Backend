@@ -11,12 +11,66 @@ const getUnderMaintenanceAssetsWithMechanic = asyncHandler(async (request, respo
         // },
 
         {
+            // $lookup: {
+            //     from: "assetmaintenances",
+            //     localField: "_id",
+            //     foreignField: "assetId",
+            //     as: "assetsUnderMaintenance"
+            // }
+
             $lookup: {
                 from: "assetmaintenances",
-                localField: "_id",
-                foreignField: "assetId",
+                let: {assetID: "$_id"},
+                pipeline: [
+                    {
+                        $match: {
+                            $expr: {
+                                $eq: ["$assetId", "$$assetID"]
+                            }
+                        }
+                    },
+
+                    {
+                        $lookup: {
+                            from: "users",
+                            let: {mechanicId: "$mechanic"},
+                            pipeline: [
+                                {
+                                    $match: {
+                                        $expr: {
+                                            $eq: ["$_id", "$$mechanicId"]
+                                        }
+                                    }
+                                },
+                                
+                                {
+                                    $project: {
+                                        password: 0,
+                                        refreshToken: 0,
+                                        __v: 0,
+                                        updatedAt: 0,
+                                        createdAt: 0,
+                                    }
+                                }
+                            ],
+                            as: "mechanicDetails"
+                        }
+                    },
+                ],
                 as: "assetsUnderMaintenance"
+            },
+        },
+
+        {
+            $addFields: {
+                mechanic: {
+                    $arrayElemAt: ["$assetsUnderMaintenance.mechanicDetails", 0]
+                }
             }
+        },
+
+        {
+            $unset: "assetsUnderMaintenance"
         }
 
     ]); 
