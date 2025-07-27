@@ -1,6 +1,12 @@
 import mongoose, { mongo, Schema } from "mongoose";
 
 const maintenanceAcknowledgmentSchema = new Schema({
+    acknowledgementId: {
+        type: String,
+        required: false,
+        trim: true,
+    },
+
     assetSpareId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "AssetSpare",
@@ -39,5 +45,13 @@ const maintenanceAcknowledgmentSchema = new Schema({
     },
 
 }, {timestamps: true});
+
+maintenanceAcknowledgmentSchema.pre("save", function(next){
+    if(!this.acknowledgementId){
+        this.acknowledgementId = "MNTA" + this._id;
+    }
+
+    next();
+})
 
 export const MaintenanceAcknowledgment = mongoose.model("MaintenanceAcknowledgment", maintenanceAcknowledgmentSchema);
