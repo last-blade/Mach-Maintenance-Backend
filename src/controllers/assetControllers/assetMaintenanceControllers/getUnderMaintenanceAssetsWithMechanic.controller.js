@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { apiResponse, Asset, AssetMaintenance, asyncHandler } from "../../allImports.js";
 
-const getUnderMaintenanceAssets = asyncHandler(async (request, response) => {
+const getUnderMaintenanceAssetsWithMechanic = asyncHandler(async (request, response) => {
 
     const underMaintenanceAssets = await Asset.aggregate([
         // {
@@ -28,4 +28,4 @@ const getUnderMaintenanceAssets = asyncHandler(async (request, response) => {
 
 });
 
-export {getUnderMaintenanceAssets}
+export {getUnderMaintenanceAssetsWithMechanic}
