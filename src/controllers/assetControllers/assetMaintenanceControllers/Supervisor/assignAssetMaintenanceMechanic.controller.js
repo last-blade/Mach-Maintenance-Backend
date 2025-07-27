@@ -5,8 +5,8 @@ import {
   AssetMaintenance,
   asyncHandler,
   User,
-} from "../../allImports.js";
-import { isValidObjectId } from "../../../utils/isValidObjectId.js";
+} from "../../../allImports.js";
+import { isValidObjectId } from "../../../../utils/isValidObjectId.js";
 
 const assignAssetMaintenanceMechanic = asyncHandler(
   async (request, response) => {
