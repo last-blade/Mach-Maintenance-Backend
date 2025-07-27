@@ -19,6 +19,12 @@ const assetMaintenanceSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Asset",
         required: true,
+    },
+
+    isActive: {
+        type: Boolean,
+        required: true,
+        default: true,
     }
 
 }, {timestamps: true});
