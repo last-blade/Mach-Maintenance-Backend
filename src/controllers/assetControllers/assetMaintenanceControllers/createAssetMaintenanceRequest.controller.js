@@ -26,6 +26,10 @@ const createAssetMaintenanceRequest = asyncHandler(
       throw new apiError(404, "Asset does not exist");
     }
 
+    if(foundAsset.underMaintenance){
+      throw new apiError(400, "Maintenance request in queue for this asset already")
+    }
+
     await Asset.findByIdAndUpdate(
       assetId,
       {
