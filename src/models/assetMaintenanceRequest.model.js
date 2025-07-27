@@ -35,7 +35,13 @@ const assetMaintenanceRequestSchema = new Schema({
         type: String,
         enum: ["User", "Employee"],
         required: true,
-    }
+    },
+
+    isActive: {
+        type: Boolean,
+        required: true,
+        default: true,
+    },
 
 }, {timestamps: true});
 
