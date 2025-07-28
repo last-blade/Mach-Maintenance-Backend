@@ -42,6 +42,12 @@ const employeeSchema = new Schema({
         trim: true,
     },
 
+    accountType: {
+        type: String,
+        enum: ["Supervisor", "Mechanic", "Production"],
+        required: true,
+    },
+
     jobTitle: {
         type: String,
         required: true,
