@@ -5,7 +5,7 @@ import {
   AssetMaintenance,
   AssetMaintenanceRequest,
   asyncHandler,
-  User,
+  Employee,
 } from "../../../allImports.js";
 import { isValidObjectId } from "../../../../utils/isValidObjectId.js";
 
@@ -31,7 +31,7 @@ const assignAssetMaintenanceMechanic = asyncHandler(
       throw new apiError(404, "Asset not found");
     }
 
-    const foundUser = await User.findById(mechanicId);
+    const foundUser = await Employee.findById(mechanicId);
 
     if (!foundUser) {
       throw new apiError(404, "User not found");
@@ -63,6 +63,14 @@ const assignAssetMaintenanceMechanic = asyncHandler(
       assetId,
       assetMaintenanceRequestId: foundRequest._id
     });
+
+    const foundMaintenanceRequest = await AssetMaintenanceRequest.findOne({
+      isActive: true,
+      assetId,
+    });
+
+    foundMaintenanceRequest.maintenanceId = createdMaintenance._id;
+    await foundMaintenanceRequest.save({validateBeforeSave: false});
 
     return response
       .status(201)
