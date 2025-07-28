@@ -20,8 +20,8 @@ const loginEmployee = asyncHandler(async (request, response) => {
         throw new apiError(401, "Incorrect password")
     }
 
-    const accessToken = await generateAccessToken(foundEmployee._id);
-    const refreshToken = await generateRefreshToken(foundEmployee._id);
+    const accessToken = await generateAccessToken(foundEmployee._id, foundEmployee.accountType);
+    const refreshToken = await generateRefreshToken(foundEmployee._id, foundEmployee.accountType);
 
     if(!accessToken || !refreshToken){
         throw new apiError(500, "Error in generating access and refresh token")
