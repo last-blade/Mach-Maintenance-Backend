@@ -1,7 +1,7 @@
 import { apiError, apiResponse, Asset, AssetMaintenance, AssetMaintenanceRequest, asyncHandler, MaintenanceAcknowledgment } from "../../../allImports.js";
 
 const updateAssetMaintenanceStatus = asyncHandler(async (request, response) => {
-    const {assetId, status, remark, comment,} = request.body;
+    const {assetId, status, remark, comment, assetSpareId} = request.body;
 
     if(!assetId){
         throw new apiError(400, "Asset ID is required")
@@ -16,7 +16,7 @@ const updateAssetMaintenanceStatus = asyncHandler(async (request, response) => {
     }
 
     const foundCorrespondingMaintenance = await AssetMaintenance.findOne({
-        isactive: true,
+        isactive,
         assetId,
     });
 
@@ -27,6 +27,7 @@ const updateAssetMaintenanceStatus = asyncHandler(async (request, response) => {
         comment,
         maintenanceId: foundCorrespondingMaintenance._id,
         acknowledgementCreator: request.user.id,
+        assetSpareId: assetSpareId || null,
     });
 
     foundCorrespondingMaintenance.acknowledgementId = createAssetMaintenanceAcknowledgement;
