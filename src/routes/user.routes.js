@@ -44,9 +44,9 @@ router.route("/hr/department/add-department").post(authentication, addDepartment
 //GET
 router.route("/hr/department/departments").get(authentication, fetchDepartment);
 //PUT
-router.route("/hr/department/edit/:departmentId").get(authentication, editDepartment);
+router.route("/hr/department/edit/:departmentId").put(authentication, editDepartment);
 //DELETE
-router.route("/hr/department/delete/:departmentId").get(authentication, deleteDepartment);
+router.route("/hr/department/delete/:departmentId").delete(authentication, deleteDepartment);
 
 //~EMPLOYEE-ROUTES
 //POST
@@ -54,8 +54,8 @@ router.route("/hr/employee/add-employee").post(authentication, addEmployee);
 //GET
 router.route("/hr/employee/employees").get(authentication, getEmployees);
 //PUT
-router.route("/hr/employee/edit/:employeeId").get(authentication, editEmployee);
+router.route("/hr/employee/edit/:employeeId").put(authentication, editEmployee);
 //DELETE
-router.route("/hr/employee/:employeeId").get(authentication, deleteEmployee);
+router.route("/hr/employee/:employeeId").delete(authentication, deleteEmployee);
 
 export default router
