@@ -58,20 +58,29 @@ const getUnderMaintenanceAssetsWithMechanic = asyncHandler(async (request, respo
                     },
                 ],
                 as: "assetsUnderMaintenance"
-            },
+            }, 
         },
 
         {
-            $addFields: {
-                mechanic: {
-                    $arrayElemAt: ["$assetsUnderMaintenance.mechanicDetails", 0]
-                }
+            $lookup: {
+                from: "maintenanceacknowledgments",
+                localField: "_id",
+                foreignField: "assetId",
+                as: "acknowledgement",
             }
-        },
-
-        {
-            $unset: "assetsUnderMaintenance"
         }
+
+        // {
+        //     $addFields: {
+        //         mechanic: {
+        //             $arrayElemAt: ["$assetsUnderMaintenance.mechanicDetails", 0]
+        //         }
+        //     }
+        // },
+
+        // {
+        //     $unset: "assetsUnderMaintenance"
+        // }
 
     ]); 
     
