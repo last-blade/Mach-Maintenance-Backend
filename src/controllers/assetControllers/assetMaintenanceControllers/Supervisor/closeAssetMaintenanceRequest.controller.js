@@ -1,4 +1,4 @@
-import { apiResponse, AssetMaintenance, AssetMaintenanceRequest, asyncHandler } from "../../../allImports.js";
+import { apiResponse, Asset, AssetMaintenance, AssetMaintenanceRequest, asyncHandler } from "../../../allImports.js";
 
 const closeAssetMaintenanceRequest = asyncHandler(async (request, response) => {
     const {assetId} = request.params;
@@ -14,6 +14,12 @@ const closeAssetMaintenanceRequest = asyncHandler(async (request, response) => {
     const assetInMaintenance = await AssetMaintenance.findByIdAndUpdate(maintenanceId, {
         isActive: false,
     }, {new: true});
+
+    await Asset.findByIdAndUpdate(assetId, {
+        $set: {
+            underMaintenance: false,
+        }
+    });
 
     return response.status(200)
     .json(
