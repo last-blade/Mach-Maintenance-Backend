@@ -13,7 +13,7 @@ const addEmployee = asyncHandler(async (request, response) => {
     password,
     confirmPassword,
   } = request.body;
-
+console.log("req user",request.user)
   if (
     [
       fullName,
@@ -50,6 +50,7 @@ const addEmployee = asyncHandler(async (request, response) => {
     shift,
     address,
     password,
+    employeeCreator: request.user.id,
   });
 
   const foundNewlyCreatedEmployee = await Employee.findOne({ email }).select(
