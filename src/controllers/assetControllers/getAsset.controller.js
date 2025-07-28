@@ -7,7 +7,7 @@ const getAsset = asyncHandler(async (request, response) => {
         throw new apiError(400, "Asset ID not found")
     }
 
-    const foundAsset = await Asset.findById(assetId).populate("assetCategory assetBrand assetSupplier assetLocation", "assetCategory assetBrand assetSupplierName assetType assetSupplierPhone assetCompanyName locationName locationCode")
+    const foundAsset = await Asset.findById(assetId).populate("assetCategory assetBrand assetSupplier", "assetCategory assetBrand assetSupplierName assetType assetSupplierPhone assetCompanyName")
     .select("-assetCreator");
 
     if(!foundAsset){
