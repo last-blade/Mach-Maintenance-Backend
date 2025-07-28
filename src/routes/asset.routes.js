@@ -30,6 +30,7 @@ import { getAssetMaintenance } from "../controllers/assetControllers/assetMainte
 import { getUnderMaintenanceAssetsWithMechanic } from "../controllers/assetControllers/assetMaintenanceControllers/getUnderMaintenanceAssetsWithMechanic.controller.js";
 import { getAllAssetsUnderMaintenance } from "../controllers/assetControllers/assetMaintenanceControllers/getAllAssetsUnderMaintenance.controller.js";
 import employeeAuth from "../middlewares/auth.employee.middleware.js";
+import { getAssetMaintenanceRequests } from "../controllers/assetControllers/assetMaintenanceControllers/MaintenanceRequestor/getAssetMaintenanceRequests.controller.js";
 
 const router = Router();
 
@@ -55,6 +56,7 @@ router.route("/asset/:assetId").get(getAsset);
 router.route("/asset-history/:assetId").get(authentication, getAssetDetails);
 router.route("/under-maintenance-with-mechanic").get(authentication, getUnderMaintenanceAssetsWithMechanic);
 router.route("/under-maintenance").get(authentication, getAllAssetsUnderMaintenance);
+router.route("/asset-maintenance-requests").get(employeeAuth, getAssetMaintenanceRequests);
 
 //PATCH
 router.route("/change-asset-location/:assetId").patch(authentication, updateAssetLocation);
