@@ -56,6 +56,6 @@ router.route("/hr/employee/employees").get(authentication, getEmployees);
 //PUT
 router.route("/hr/employee/edit/:employeeId").put(authentication, editEmployee);
 //DELETE
-router.route("/hr/employee/:employeeId").delete(authentication, deleteEmployee);
+router.route("/hr/employee/delete/:employeeId").delete(authentication, deleteEmployee);
 
 export default router
