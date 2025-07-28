@@ -83,7 +83,13 @@ const employeeSchema = new Schema({
     refreshToken :{
         type: String,
         required: false,
-    }
+    },
+
+    employeeCreator: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+    },
 }, {timestamps: true});
 
 
