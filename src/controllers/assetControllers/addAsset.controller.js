@@ -28,7 +28,7 @@ const addAsset = asyncHandler(async (request, response) => {
         throw new apiError(500, "Something went wrong while adding asset")
     }
 
-    const qrData = newASSET._id;
+    const qrData = `${newASSET._id}`;
     const qrCodeDataUri = await QRCode.toDataURL(qrData);
 
     foundAsset.assetQrCodeUrl = qrCodeDataUri;
