@@ -31,7 +31,8 @@ const addAsset = asyncHandler(async (request, response) => {
     const qrData = `Asset ID: ${newASSET._id}
         Asset Code: ${newASSET.assetCode}
         Asset Name: ${newASSET.assetName}
-        Brand: ${newASSET.assetBrand} | ID: ${newASSET._id}`
+        Brand: ${newASSET.assetBrand} | ID: ${newASSET._id}
+        Url: https://tpm-mobile.onrender.com/asset-details/${newASSET._id}`
     ;
     const qrCodeDataUri = await QRCode.toDataURL(qrData);
 
