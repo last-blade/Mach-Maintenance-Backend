@@ -15,14 +15,22 @@ const updateAssetMaintenanceStatus = asyncHandler(async (request, response) => {
         throw new apiError(400, "Remark is required")
     }
 
+    const foundCorrespondingMaintenance = await AssetMaintenance.findOne({
+        isactive: true,
+        assetId,
+    });
+
     const createAssetMaintenanceAcknowledgement = await MaintenanceAcknowledgment.create({
         assetId,
         status,
         remark,
         comment,
-        maintenanceRequestId,
+        maintenanceId: foundCorrespondingMaintenance._id,
         acknowledgementCreator: request.user.id,
     });
+
+    foundCorrespondingMaintenance.acknowledgementId = createAssetMaintenanceAcknowledgement;
+    await foundCorrespondingMaintenance.save({validateBeforeSave: false});
 
     // if(status === "Completed"){
     //     await Asset.findByIdAndUpdate(assetId, {
