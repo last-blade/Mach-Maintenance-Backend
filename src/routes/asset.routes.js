@@ -31,6 +31,8 @@ import { getUnderMaintenanceAssetsWithMechanic } from "../controllers/assetContr
 import { getAllAssetsUnderMaintenance } from "../controllers/assetControllers/assetMaintenanceControllers/getAllAssetsUnderMaintenance.controller.js";
 import employeeAuth from "../middlewares/auth.employee.middleware.js";
 import { getAssetMaintenanceRequests } from "../controllers/assetControllers/assetMaintenanceControllers/MaintenanceRequestor/getAssetMaintenanceRequests.controller.js";
+import { updateAssetMaintenanceStatus } from "../controllers/assetControllers/assetMaintenanceControllers/Mechanic/updateAssetMaintenanceStatus.controller.js";
+import { closeAssetMaintenanceRequest } from "../controllers/assetControllers/assetMaintenanceControllers/Supervisor/closeAssetMaintenanceRequest.controller.js";
 
 const router = Router();
 
@@ -42,6 +44,7 @@ router.route("/add-asset-supplier").post(authentication, createAssetSupplier);
 router.route("/add-asset-spare").post(authentication, createAssetSpare);
 router.route("/assign-maintenance-mechanic").post(employeeAuth, assignAssetMaintenanceMechanic);
 router.route("/raise-maintenance-request/:assetId").post(employeeAuth, createAssetMaintenanceRequest);
+router.route("/send-acknowledgement").post(employeeAuth, updateAssetMaintenanceStatus);
 
 //GET
 router.route("/asset-categories").get(authentication, fetchAssetCategories);
@@ -60,6 +63,7 @@ router.route("/asset-maintenance-requests").get(employeeAuth, getAssetMaintenanc
 
 //PATCH
 router.route("/change-asset-location/:assetId").patch(authentication, updateAssetLocation);
+router.route("/close-maintenance-request").patch(employeeAuth, closeAssetMaintenanceRequest);
 
 //PUT
 router.route("/edit-asset/:assetId").put(authentication, editAsset);
