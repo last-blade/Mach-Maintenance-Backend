@@ -39,12 +39,22 @@ const createAssetMaintenanceRequest = asyncHandler(
       { new: true }
     );
 
+    var model;
+
+    if(request.user.accountType === "Admin" || request.user.accountType === "HR"){
+      model = "User"
+    }
+
+    else{
+      model = "Employee"
+    }
+
     const assetMaintenanceRequest = await AssetMaintenanceRequest.create({
       remark,
       assetId,
       priority,
       assetMaintenanceRequestCreator: request.user.id,
-      creatorModel: request.user.accountType === "Admin" || "HR" ? "User" : "Employee",
+      creatorModel: model,
     });
 
     return response
