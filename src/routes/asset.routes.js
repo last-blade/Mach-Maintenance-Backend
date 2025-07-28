@@ -29,7 +29,7 @@ import { createAssetMaintenanceRequest } from "../controllers/assetControllers/a
 import { getAssetMaintenance } from "../controllers/assetControllers/assetMaintenanceControllers/getAssetMaintenance.controller.js";
 import { getUnderMaintenanceAssetsWithMechanic } from "../controllers/assetControllers/assetMaintenanceControllers/getUnderMaintenanceAssetsWithMechanic.controller.js";
 import { getAllAssetsUnderMaintenance } from "../controllers/assetControllers/assetMaintenanceControllers/getAllAssetsUnderMaintenance.controller.js";
-
+import employeeAuth from "../middlewares/auth.employee.middleware.js";
 
 const router = Router();
 
@@ -39,8 +39,8 @@ router.route("/add-asset-category").post(authentication, createAssetCategory);
 router.route("/add-asset-brand").post(authentication, createAssetBrand);
 router.route("/add-asset-supplier").post(authentication, createAssetSupplier);
 router.route("/add-asset-spare").post(authentication, createAssetSpare);
-router.route("/assign-maintenance-mechanic").post(authentication, assignAssetMaintenanceMechanic);
-router.route("/raise-maintenance-request/:assetId").post(authentication, createAssetMaintenanceRequest);
+router.route("/assign-maintenance-mechanic").post(employeeAuth, assignAssetMaintenanceMechanic);
+router.route("/raise-maintenance-request/:assetId").post(employeeAuth, createAssetMaintenanceRequest);
 
 //GET
 router.route("/asset-categories").get(authentication, fetchAssetCategories);
