@@ -28,12 +28,7 @@ const addAsset = asyncHandler(async (request, response) => {
         throw new apiError(500, "Something went wrong while adding asset")
     }
 
-    const qrData = `Asset ID: ${newASSET._id}
-        Asset Code: ${newASSET.assetCode}
-        Asset Name: ${newASSET.assetName}
-        Brand: ${newASSET.assetBrand} | ID: ${newASSET._id}
-        Url: https://tpm-mobile.onrender.com/asset-details/${newASSET._id}`
-    ;
+    const qrData = newASSET._id;
     const qrCodeDataUri = await QRCode.toDataURL(qrData);
 
     foundAsset.assetQrCodeUrl = qrCodeDataUri;
