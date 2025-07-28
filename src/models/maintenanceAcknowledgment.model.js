@@ -1,4 +1,4 @@
-import mongoose, { mongo, Schema } from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const maintenanceAcknowledgmentSchema = new Schema({
     acknowledgementId: {
@@ -30,6 +30,12 @@ const maintenanceAcknowledgmentSchema = new Schema({
         required: false,
         trim: true,
         default: null,
+    },
+
+    assetId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Asset",
+        required: true,
     },
 
     maintenanceRequestId: {
