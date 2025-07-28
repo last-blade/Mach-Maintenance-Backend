@@ -16,7 +16,7 @@ const updateAssetMaintenanceStatus = asyncHandler(async (request, response) => {
     }
 
     const foundCorrespondingMaintenance = await AssetMaintenance.findOne({
-        isactive,
+        isActive: true,
         assetId,
     });
 
