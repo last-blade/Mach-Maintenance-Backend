@@ -63,7 +63,7 @@ router.route("/asset-maintenance-requests").get(employeeAuth, getAssetMaintenanc
 
 //PATCH
 router.route("/change-asset-location/:assetId").patch(authentication, updateAssetLocation);
-router.route("/close-maintenance-request").patch(employeeAuth, closeAssetMaintenanceRequest);
+router.route("/close-maintenance-request/:assetId").patch(employeeAuth, closeAssetMaintenanceRequest);
 
 //PUT
 router.route("/edit-asset/:assetId").put(authentication, editAsset);
