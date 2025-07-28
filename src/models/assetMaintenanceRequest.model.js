@@ -37,6 +37,12 @@ const assetMaintenanceRequestSchema = new Schema({
         required: true,
     },
 
+    maintenanceId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "AssetMaintenance",
+        required: false,
+    },
+
     isActive: {
         type: Boolean,
         required: true,

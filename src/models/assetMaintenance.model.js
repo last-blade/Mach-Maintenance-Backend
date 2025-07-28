@@ -22,6 +22,18 @@ const assetMaintenanceSchema = new Schema({
         required: true,
     },
 
+    assetMaintenanceRequestId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "AssetMaintenanceRequest",
+        required: true,
+    },
+
+    acknowledgementId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "MaintenanceAcknowledgment",
+        required: false,
+    },
+
     isActive: {
         type: Boolean,
         required: true,

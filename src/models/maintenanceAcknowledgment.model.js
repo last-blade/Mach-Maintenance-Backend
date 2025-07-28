@@ -38,9 +38,9 @@ const maintenanceAcknowledgmentSchema = new Schema({
         required: true,
     },
 
-    maintenanceRequestId: {
+    maintenanceId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "AssetMaintenanceRequest",
+        ref: "AssetMaintenance",
         required: true,
     },
 
