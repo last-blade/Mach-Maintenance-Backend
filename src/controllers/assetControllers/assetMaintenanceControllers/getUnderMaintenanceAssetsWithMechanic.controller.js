@@ -32,7 +32,7 @@ const getUnderMaintenanceAssetsWithMechanic = asyncHandler(async (request, respo
 
                     {
                         $lookup: {
-                            from: "users",
+                            from: "employees",
                             let: {mechanicId: "$mechanic"},
                             pipeline: [
                                 {
