@@ -45,8 +45,7 @@ const createAssetMaintenanceRequest = asyncHandler(
       assetId,
       priority,
       assetMaintenanceRequestCreator: request.user.id,
-      creatorModel:
-        request.user.accountType === "Admin" || "HR" ? "User" : "Employee",
+      creatorModel: request.user.accountType === "Admin" || "HR" ? "User" : "Employee",
     });
 
     return response
