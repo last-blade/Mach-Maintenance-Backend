@@ -3,6 +3,7 @@ import {
   apiResponse,
   Asset,
   AssetMaintenance,
+  AssetMaintenanceRequest,
   asyncHandler,
   User,
 } from "../../../allImports.js";
@@ -38,6 +39,7 @@ const assignAssetMaintenanceMechanic = asyncHandler(
 
     const foundAssetUnderMaintenance = await AssetMaintenance.find({
       assetId,
+      isActive: true,
     });
 
     if (foundAssetUnderMaintenance.length > 0) {
@@ -48,9 +50,18 @@ const assignAssetMaintenanceMechanic = asyncHandler(
         throw new apiError(400, "Create a maintenance request first")
     }
 
+    const foundRequest = await AssetMaintenanceRequest.findOne({ 
+      assetId, isActive: true 
+    });
+
+    if (!foundRequest) {
+      throw new apiError(404, "No maintenance request found for this asset");
+    }
+
     const createdMaintenance = await AssetMaintenance.create({
       mechanic: mechanicId,
       assetId,
+      assetMaintenanceRequestId: foundRequest._id
     });
 
     return response
