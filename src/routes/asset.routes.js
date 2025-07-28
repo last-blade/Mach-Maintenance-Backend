@@ -51,7 +51,7 @@ router.route("/assets").get(authentication, getAssets);
 router.route("/asset-transfer-history/:assetId").get(authentication, getAssetTransferHistory);
 router.route("/asset-maintenance").get(authentication, getAssetMaintenance);
 router.route("/asset-transfer-history").get(authentication, getAssetTransferHistory);
-router.route("/asset/:assetId").get(authentication, getAsset);
+router.route("/asset/:assetId").get(getAsset);
 router.route("/asset-history/:assetId").get(authentication, getAssetDetails);
 router.route("/under-maintenance-with-mechanic").get(authentication, getUnderMaintenanceAssetsWithMechanic);
 router.route("/under-maintenance").get(authentication, getAllAssetsUnderMaintenance);
