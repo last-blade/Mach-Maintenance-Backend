@@ -10,7 +10,6 @@ const createAssetMaintenanceRequest = asyncHandler(
   async (request, response) => {
     const { assetId } = request.params;
     const { remark, priority } = request.body;
-    console.log(request.user);
 
     if (!assetId) {
       throw new apiError(400, "Asset ID is required");
