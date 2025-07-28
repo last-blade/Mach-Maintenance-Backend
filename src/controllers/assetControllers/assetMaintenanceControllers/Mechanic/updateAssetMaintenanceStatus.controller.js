@@ -1,7 +1,7 @@
 import { apiError, apiResponse, Asset, AssetMaintenance, AssetMaintenanceRequest, asyncHandler, MaintenanceAcknowledgment } from "../../../allImports.js";
 
 const updateAssetMaintenanceStatus = asyncHandler(async (request, response) => {
-    const {assetId, status, remark, comment, maintenanceRequestId} = request.body;
+    const {assetId, status, remark, comment,} = request.body;
 
     if(!assetId){
         throw new apiError(400, "Asset ID is required")
