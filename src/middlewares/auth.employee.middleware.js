@@ -30,4 +30,4 @@ const authentication = asyncHandler(async (request, _, next) => {
 
 });
 
-export {authentication}
+export default authentication
