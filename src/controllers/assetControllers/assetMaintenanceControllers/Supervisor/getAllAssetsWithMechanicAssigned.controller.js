@@ -1,3 +1,9 @@
+/*
+    neeche code mein assetmaintenanceId ke corresponding main 2 details fetch kar raha hoon i.e. maintenanceRequestId and mechanic details
+    matlab ki assetMaintenanceid i.e. jo mechanic assign karte time id banegi uske corresponding ek maintenancerequestid bhi hogi 
+    and ek mechanic bhi hoga, toh yeh sab maintenanceid ke corresponding fetch ho raha hai
+*/
+
 import { apiResponse, AssetMaintenance, asyncHandler } from "../../../allImports.js";
 
 const getAllAssetsWithMechanicAssigned = asyncHandler(async (request, response) => {
