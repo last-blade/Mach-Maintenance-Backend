@@ -1,6 +1,6 @@
 import { apiResponse, Asset, AssetMaintenance, asyncHandler } from "../../../allImports.js";
 
-const getassetsAssignedToMeForMaintenance = asyncHandler(async (request, response) => {
+const getAssetsAssignedToMeForMaintenance = asyncHandler(async (request, response) => {
     const assetsAssignedToMeForMaintenance = await AssetMaintenance.find({
         mechanic: request.user.id,
     }).populate("assetId");
@@ -18,4 +18,4 @@ const getassetsAssignedToMeForMaintenance = asyncHandler(async (request, respons
     )
 });
 
-export {getassetsAssignedToMeForMaintenance}
+export {getAssetsAssignedToMeForMaintenance}
