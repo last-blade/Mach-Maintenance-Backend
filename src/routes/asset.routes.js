@@ -34,6 +34,7 @@ import { getAssetMaintenanceRequests } from "../controllers/assetControllers/ass
 import { updateAssetMaintenanceStatus } from "../controllers/assetControllers/assetMaintenanceControllers/Mechanic/updateAssetMaintenanceStatus.controller.js";
 import { closeAssetMaintenanceRequest } from "../controllers/assetControllers/assetMaintenanceControllers/Supervisor/closeAssetMaintenanceRequest.controller.js";
 import { authorizeRoles } from "../middlewares/authorizeRole.middleware.js";
+import { getAllAssetsWithMechanicAssigned } from "../controllers/assetControllers/assetMaintenanceControllers/Supervisor/getAllAssetsWithMechanicAssigned.controller.js";
 
 const router = Router();
 
@@ -61,6 +62,7 @@ router.route("/asset-history/:assetId").get(authentication, getAssetDetails);
 router.route("/under-maintenance-with-mechanic").get(authentication, getUnderMaintenanceAssetsWithMechanic);
 router.route("/under-maintenance").get(authentication, getAllAssetsUnderMaintenance);
 router.route("/asset-maintenance-requests").get(employeeAuth, authorizeRoles("Production"),getAssetMaintenanceRequests);
+router.route("/assets-with-mechanics").get(employeeAuth, authorizeRoles("Supervisor"), getAllAssetsWithMechanicAssigned);
 
 //PATCH
 router.route("/change-asset-location/:assetId").patch(authentication, updateAssetLocation);
