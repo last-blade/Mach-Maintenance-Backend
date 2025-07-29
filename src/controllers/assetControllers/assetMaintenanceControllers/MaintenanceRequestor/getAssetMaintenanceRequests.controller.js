@@ -17,7 +17,7 @@ const getAssetMaintenanceRequests = asyncHandler(async (request, response) => {
     const assetMaintenanceRequests = await AssetMaintenanceRequest.find({
         assetMaintenanceRequestCreator: request.user.id,
         creatorModel: model,
-    }).select("-assetMaintenanceRequestCreator");
+    }).populate("assetId").select("-assetMaintenanceRequestCreator");
 
     return response.status(200)
     .json(
