@@ -33,6 +33,7 @@ import employeeAuth from "../middlewares/auth.employee.middleware.js";
 import { getAssetMaintenanceRequests } from "../controllers/assetControllers/assetMaintenanceControllers/MaintenanceRequestor/getAssetMaintenanceRequests.controller.js";
 import { updateAssetMaintenanceStatus } from "../controllers/assetControllers/assetMaintenanceControllers/Mechanic/updateAssetMaintenanceStatus.controller.js";
 import { closeAssetMaintenanceRequest } from "../controllers/assetControllers/assetMaintenanceControllers/Supervisor/closeAssetMaintenanceRequest.controller.js";
+import { authorizeRoles } from "../middlewares/authorizeRole.middleware.js";
 
 const router = Router();
 
@@ -42,9 +43,9 @@ router.route("/add-asset-category").post(authentication, createAssetCategory);
 router.route("/add-asset-brand").post(authentication, createAssetBrand);
 router.route("/add-asset-supplier").post(authentication, createAssetSupplier);
 router.route("/add-asset-spare").post(authentication, createAssetSpare);
-router.route("/assign-maintenance-mechanic").post(employeeAuth, assignAssetMaintenanceMechanic);
-router.route("/raise-maintenance-request/:assetId").post(employeeAuth, createAssetMaintenanceRequest);
-router.route("/send-acknowledgement").post(employeeAuth, updateAssetMaintenanceStatus);
+router.route("/assign-maintenance-mechanic").post(employeeAuth, authorizeRoles("Supervisor"),assignAssetMaintenanceMechanic);
+router.route("/raise-maintenance-request/:assetId").post(employeeAuth, authorizeRoles("Production"),createAssetMaintenanceRequest);
+router.route("/send-acknowledgement").post(employeeAuth, authorizeRoles("Mechanic"),updateAssetMaintenanceStatus);
 
 //GET
 router.route("/asset-categories").get(authentication, fetchAssetCategories);
