@@ -1,6 +1,6 @@
 import { Asset, asyncHandler } from "../../../allImports.js";
 
-const getAssetDetails = asyncHandler(async (request, response) => {
+const getAssetsAssignedToMe = asyncHandler(async (request, response) => {
     const asset = await Asset.aggregate([
         {
             $lookup: {
@@ -13,4 +13,4 @@ const getAssetDetails = asyncHandler(async (request, response) => {
     ])
 });
 
-export {getAssetDetails}
+export {getAssetsAssignedToMe}
