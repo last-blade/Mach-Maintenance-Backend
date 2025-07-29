@@ -37,7 +37,7 @@ const getAllAssetsWithMechanicAssigned = asyncHandler(async (request, response) 
                         }
                     }
                 ],
-                as: "result"
+                as: "assetMaintenanceRequestDetails"
             },
         },
 
