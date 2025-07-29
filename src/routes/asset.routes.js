@@ -36,6 +36,7 @@ import { authorizeRoles } from "../middlewares/authorizeRole.middleware.js";
 import { getAllAssetsWithMechanicAssigned } from "../controllers/assetControllers/assetMaintenanceControllers/Supervisor/getAllAssetsWithMechanicAssigned.controller.js";
 import { getAcknowledgementsCorrespondingToMaintenanceId } from "../controllers/assetControllers/assetMaintenanceControllers/Supervisor/getAcknowledgementsCorrespondingToMaintenanceId.controller.js";
 import { getAcknowledgementDetailsForSupervisor } from "../controllers/assetControllers/assetMaintenanceControllers/Supervisor/getAcknowledgementDetailsForSupervisor.controller.js";
+import { getAssetsAssignedToMeForMaintenance } from "../controllers/assetControllers/assetMaintenanceControllers/Mechanic/getAssetsAssignedToMeForMaintenance.controller.js";
 
 const router = Router();
 
@@ -105,4 +106,6 @@ router.route("/acknowledgement/:acknowledgementId").get(authentication, authoriz
 //~Mechanic
 //POST
 router.route("/send-acknowledgement").post(authentication, authorizeRoles("Mechanic"),updateAssetMaintenanceStatus);
+//GET
+router.route("/maintenances-assigned-to-me").get(authentication, authorizeRoles("Mechanic"), getAssetsAssignedToMeForMaintenance);
 export default router;
