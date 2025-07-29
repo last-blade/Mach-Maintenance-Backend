@@ -35,6 +35,7 @@ import { closeAssetMaintenanceRequest } from "../controllers/assetControllers/as
 import { authorizeRoles } from "../middlewares/authorizeRole.middleware.js";
 import { getAllAssetsWithMechanicAssigned } from "../controllers/assetControllers/assetMaintenanceControllers/Supervisor/getAllAssetsWithMechanicAssigned.controller.js";
 import { getAcknowledgementsCorrespondingToMaintenanceId } from "../controllers/assetControllers/assetMaintenanceControllers/Supervisor/getAcknowledgementsCorrespondingToMaintenanceId.controller.js";
+import { getAcknowledgementDetailsForSupervisor } from "../controllers/assetControllers/assetMaintenanceControllers/Supervisor/getAcknowledgementDetailsForSupervisor.controller.js";
 
 const router = Router();
 
@@ -93,14 +94,12 @@ router.route("/asset-maintenance-requests").get(authentication, authorizeRoles("
 //~Supervisor
 //POST
 router.route("/assign-maintenance-mechanic").post(authentication, authorizeRoles("Supervisor"),assignAssetMaintenanceMechanic);
-
 //PATCH
 router.route("/close-maintenance-request/:assetId").patch(authentication, authorizeRoles("Supervisor"), closeAssetMaintenanceRequest);
-
 //GET
 router.route("/assets-with-mechanics").get(authentication, authorizeRoles("Supervisor"), getAllAssetsWithMechanicAssigned);
 router.route("/acknowledgements-of-maintenance").get(authentication, authorizeRoles("Supervisor"), getAcknowledgementsCorrespondingToMaintenanceId);
-
+router.route("/acknowledgement/:acknowledgementId").get(authentication, authorizeRoles("Supervisor"), getAcknowledgementDetailsForSupervisor);
 
 
 //~Mechanic
