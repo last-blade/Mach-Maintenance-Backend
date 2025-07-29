@@ -60,7 +60,7 @@ router.route("/asset/:assetId").get(getAsset);
 router.route("/asset-history/:assetId").get(authentication, getAssetDetails);
 router.route("/under-maintenance-with-mechanic").get(authentication, getUnderMaintenanceAssetsWithMechanic);
 router.route("/under-maintenance").get(authentication, getAllAssetsUnderMaintenance);
-router.route("/asset-maintenance-requests").get(employeeAuth, getAssetMaintenanceRequests);
+router.route("/asset-maintenance-requests").get(employeeAuth, authorizeRoles("Production"),getAssetMaintenanceRequests);
 
 //PATCH
 router.route("/change-asset-location/:assetId").patch(authentication, updateAssetLocation);
