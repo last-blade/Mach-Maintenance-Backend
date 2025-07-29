@@ -65,7 +65,7 @@ router.route("/asset-maintenance-requests").get(employeeAuth, authorizeRoles("Pr
 router.route("/assets-with-mechanics").get(employeeAuth, authorizeRoles("Supervisor"), getAllAssetsWithMechanicAssigned);
 
 //PATCH
-router.route("/change-asset-location/:assetId").patch(authentication, updateAssetLocation);
+router.route("/change-asset-location/:assetId").patch(authentication, authorizeRoles("Production", "Supervisor", "Admin", "HR"),updateAssetLocation);
 router.route("/close-maintenance-request/:assetId").patch(employeeAuth, closeAssetMaintenanceRequest);
 
 //PUT
