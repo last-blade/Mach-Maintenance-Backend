@@ -23,9 +23,9 @@ const authentication = asyncHandler(async (request, _, next) => {
     let foundUser = null;
 
     if (accountType === "HR" || accountType === "Admin") {
-        foundUser = await User.findById(userId).select("-refreshToken -password -_id -__v");
+        foundUser = await User.findById(userId).select("-refreshToken -password -__v");
     } else {
-        foundUser = await Employee.findById(userId).select("-refreshToken -password -_id -__v");
+        foundUser = await Employee.findById(userId).select("-refreshToken -password -__v");
     }
 
     request.user = foundUser;
