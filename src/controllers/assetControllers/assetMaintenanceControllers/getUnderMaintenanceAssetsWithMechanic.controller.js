@@ -32,6 +32,25 @@ const getUnderMaintenanceAssetsWithMechanic = asyncHandler(async (request, respo
 
                     {
                         $lookup: {
+                            from: "maintenanceacknowledgments",
+                            let: {ackId: "$acknowledgementId"},
+
+                            pipeline: [
+                                {
+                                    $match: {
+                                        $expr: {
+                                            $eq: ["$_id", "$$ackId"]
+                                        }
+                                    }
+                                }
+                            ],
+
+                            as: "acknowledgementDetails"
+                        }
+                    },
+
+                    {
+                        $lookup: {
                             from: "employees",
                             let: {mechanicId: "$mechanic"},
                             pipeline: [
@@ -61,14 +80,14 @@ const getUnderMaintenanceAssetsWithMechanic = asyncHandler(async (request, respo
             }, 
         },
 
-        {
-            $lookup: {
-                from: "maintenanceacknowledgments",
-                localField: "_id",
-                foreignField: "assetId",
-                as: "acknowledgement",
-            }
-        }
+        // {
+        //     $lookup: {
+        //         from: "maintenanceacknowledgments",
+        //         localField: "_id",
+        //         foreignField: "assetId",
+        //         as: "acknowledgement",
+        //     }
+        // }
 
         // {
         //     $addFields: {
