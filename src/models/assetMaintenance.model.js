@@ -12,7 +12,7 @@ const assetMaintenanceSchema = new Schema({
 
     mechanic: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
+        ref: "Employee",
         required: true,
     },
 
