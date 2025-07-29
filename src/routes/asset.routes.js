@@ -34,6 +34,7 @@ import { updateAssetMaintenanceStatus } from "../controllers/assetControllers/as
 import { closeAssetMaintenanceRequest } from "../controllers/assetControllers/assetMaintenanceControllers/Supervisor/closeAssetMaintenanceRequest.controller.js";
 import { authorizeRoles } from "../middlewares/authorizeRole.middleware.js";
 import { getAllAssetsWithMechanicAssigned } from "../controllers/assetControllers/assetMaintenanceControllers/Supervisor/getAllAssetsWithMechanicAssigned.controller.js";
+import { getAcknowledgementsCorrespondingToMaintenanceId } from "../controllers/assetControllers/assetMaintenanceControllers/Supervisor/getAcknowledgementsCorrespondingToMaintenanceId.controller.js";
 
 const router = Router();
 
@@ -43,9 +44,6 @@ router.route("/add-asset-category").post(authentication, createAssetCategory);
 router.route("/add-asset-brand").post(authentication, createAssetBrand);
 router.route("/add-asset-supplier").post(authentication, createAssetSupplier);
 router.route("/add-asset-spare").post(authentication, createAssetSpare);
-router.route("/assign-maintenance-mechanic").post(authentication, authorizeRoles("Supervisor"),assignAssetMaintenanceMechanic);
-router.route("/raise-maintenance-request/:assetId").post(authentication, authorizeRoles("Production"),createAssetMaintenanceRequest);
-router.route("/send-acknowledgement").post(authentication, authorizeRoles("Mechanic"),updateAssetMaintenanceStatus);
 
 //GET
 router.route("/asset-categories").get(authentication, fetchAssetCategories);
@@ -60,12 +58,11 @@ router.route("/asset/:assetId").get(getAsset);
 router.route("/asset-history/:assetId").get(authentication, getAssetDetails);
 router.route("/under-maintenance-with-mechanic").get(authentication, getUnderMaintenanceAssetsWithMechanic);
 router.route("/under-maintenance").get(authentication, getAllAssetsUnderMaintenance);
-router.route("/asset-maintenance-requests").get(authentication, authorizeRoles("Production"),getAssetMaintenanceRequests);
-router.route("/assets-with-mechanics").get(authentication, authorizeRoles("Supervisor"), getAllAssetsWithMechanicAssigned);
+
+
 
 //PATCH
 router.route("/change-asset-location/:assetId").patch(authentication, authorizeRoles("Production", "Supervisor", "Admin", "HR"),updateAssetLocation);
-router.route("/close-maintenance-request/:assetId").patch(authentication, closeAssetMaintenanceRequest);
 
 //PUT
 router.route("/edit-asset/:assetId").put(authentication, editAsset);
@@ -81,4 +78,32 @@ router.route("/delete-asset-supplier/:assetSupplierId").delete(authentication, d
 router.route("/delete-asset-spare/:assetSpareId").delete(authentication, deleteAssetSpare);
 router.route("/delete-asset/:assetId").delete(authentication, deleteAsset);
 
+
+//^-----------------------------------------------------Maintenance Related Routes----------------------------------------------------------
+
+//~Production
+//POST
+router.route("/raise-maintenance-request/:assetId").post(authentication, authorizeRoles("Production"),createAssetMaintenanceRequest);
+//GET
+router.route("/asset-maintenance-requests").get(authentication, authorizeRoles("Production"),getAssetMaintenanceRequests);
+
+
+
+
+//~Supervisor
+//POST
+router.route("/assign-maintenance-mechanic").post(authentication, authorizeRoles("Supervisor"),assignAssetMaintenanceMechanic);
+
+//PATCH
+router.route("/close-maintenance-request/:assetId").patch(authentication, authorizeRoles("Supervisor"), closeAssetMaintenanceRequest);
+
+//GET
+router.route("/assets-with-mechanics").get(authentication, authorizeRoles("Supervisor"), getAllAssetsWithMechanicAssigned);
+router.route("/acknowledgements-of-maintenance").get(authentication, authorizeRoles("Supervisor"), getAcknowledgementsCorrespondingToMaintenanceId);
+
+
+
+//~Mechanic
+//POST
+router.route("/send-acknowledgement").post(authentication, authorizeRoles("Mechanic"),updateAssetMaintenanceStatus);
 export default router;
