@@ -58,10 +58,6 @@ router.route("/asset-maintenance").get(authentication, getAssetMaintenance);
 router.route("/asset-transfer-history").get(authentication, getAssetTransferHistory);
 router.route("/asset/:assetId").get(getAsset);
 router.route("/asset-history/:assetId").get(authentication, getAssetDetails);
-router.route("/under-maintenance-with-mechanic").get(authentication, getUnderMaintenanceAssetsWithMechanic);
-router.route("/under-maintenance").get(authentication, getAllAssetsUnderMaintenance);
-
-
 
 //PATCH
 router.route("/change-asset-location/:assetId").patch(authentication, authorizeRoles("Production", "Supervisor", "Admin", "HR"),updateAssetLocation);
@@ -90,8 +86,6 @@ router.route("/raise-maintenance-request/:assetId").post(authentication, authori
 router.route("/asset-maintenance-requests").get(authentication, authorizeRoles("Production"),getAssetMaintenanceRequests);
 
 
-
-
 //~Supervisor
 //POST
 router.route("/assign-maintenance-mechanic").post(authentication, authorizeRoles("Supervisor"),assignAssetMaintenanceMechanic);
@@ -108,4 +102,12 @@ router.route("/acknowledgement/:acknowledgementId").get(authentication, authoriz
 router.route("/send-acknowledgement").post(authentication, authorizeRoles("Mechanic"),updateAssetMaintenanceStatus);
 //GET
 router.route("/maintenances-assigned-to-me").get(authentication, authorizeRoles("Mechanic"), getAssetsAssignedToMeForMaintenance);
+
+
+//~Admin/HR
+//GET
+router.route("/under-maintenance-with-mechanic").get(authentication, authorizeRoles("Admin", "HR"), getUnderMaintenanceAssetsWithMechanic);
+router.route("/under-maintenance").get(authentication, getAllAssetsUnderMaintenance);
+
+
 export default router;
