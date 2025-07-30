@@ -53,7 +53,7 @@ router.route("/asset-categories").get(authentication, fetchAssetCategories);
 router.route("/asset-brands").get(authentication, fetchAssetBrands);
 router.route("/asset-suppliers").get(authentication, fetchAssetSuppliers);
 router.route("/asset-spares").get(authentication, fetchAssetSpare);
-router.route("/assets").get(authentication, getAssets);
+router.route("/assets").get(authentication, authorizeRoles("Production", "HR", "Admin", "Mechanic", "Supervisor"), getAssets);
 router.route("/asset-transfer-history/:assetId").get(authentication, getAssetTransferHistory);
 router.route("/asset-maintenance").get(authentication, getAssetMaintenance);
 router.route("/asset-transfer-history").get(authentication, getAssetTransferHistory);
