@@ -37,6 +37,7 @@ import { getAllAssetsWithMechanicAssigned } from "../controllers/assetController
 import { getAcknowledgementsCorrespondingToMaintenanceId } from "../controllers/assetControllers/assetMaintenanceControllers/Supervisor/getAcknowledgementsCorrespondingToMaintenanceId.controller.js";
 import { getAcknowledgementDetailsForSupervisor } from "../controllers/assetControllers/assetMaintenanceControllers/Supervisor/getAcknowledgementDetailsForSupervisor.controller.js";
 import { getAssetsAssignedToMeForMaintenance } from "../controllers/assetControllers/assetMaintenanceControllers/Mechanic/getAssetsAssignedToMeForMaintenance.controller.js";
+import { getAllAssetsWithMechanicsAssignedToCorrespondingMaintenenaceRequest } from "../controllers/assetControllers/assetMaintenanceControllers/MaintenanceRequestor/getAllAssetsWithMechanicsAssignedToCorrespondingMaintenenaceRequest.controller.js";
 
 const router = Router();
 
@@ -84,6 +85,7 @@ router.route("/delete-asset/:assetId").delete(authentication, deleteAsset);
 router.route("/raise-maintenance-request/:assetId").post(authentication, authorizeRoles("Production"),createAssetMaintenanceRequest);
 //GET
 router.route("/asset-maintenance-requests").get(authentication, authorizeRoles("Production"),getAssetMaintenanceRequests);
+router.route("/maintenance-request-assigned-mechanics").get(authentication, authorizeRoles("Production"), getAllAssetsWithMechanicsAssignedToCorrespondingMaintenenaceRequest);
 
 
 //~Supervisor
