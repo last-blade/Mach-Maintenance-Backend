@@ -2,7 +2,7 @@ import { apiResponse, Asset, asyncHandler } from "../allImports.js";
 
 const getAssets = asyncHandler(async (request, response) => {
     const assets = await Asset.find({
-        assetCreator: request.user.id,
+        // assetCreator: request.user.id,
     }).populate("assetLocation", "locationName locationCode")
     .populate("assetBrand", "assetBrand assetBrandDescription")
     .populate("assetCategory", "assetCategory depreciationPercentage")
