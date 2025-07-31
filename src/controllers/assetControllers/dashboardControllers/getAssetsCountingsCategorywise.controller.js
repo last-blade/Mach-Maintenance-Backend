@@ -18,6 +18,13 @@ const getAssetsCountingsCategorywise = asyncHandler(async (request, response) =>
                 ],
 
                 underMaintenance: [
+
+                    {
+                        $match: {
+                            underMaintenance: true,
+                        }
+                    },
+
                     {
                         $group: {
                             _id: "$underMaintenance",
