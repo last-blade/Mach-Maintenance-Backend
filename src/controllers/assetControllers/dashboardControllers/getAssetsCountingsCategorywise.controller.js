@@ -31,6 +31,21 @@ const getAssetsCountingsCategorywise = asyncHandler(async (request, response) =>
                             total: {$sum: 1}
                         }
                     }
+                ],
+
+                specialAssets: [
+                    {
+                        $match: {
+                            specialAsset: "Yes",
+                        }
+                    },
+
+                    {
+                        $group: {
+                            _id: "$specialAsset",
+                            total: {$sum: 1}
+                        }
+                    }
                 ]
 
             }
