@@ -86,7 +86,7 @@ router.route("/delete-asset/:assetId").delete(authentication, deleteAsset);
 //POST
 router.route("/raise-maintenance-request/:assetId").post(authentication, authorizeRoles("Production"),createAssetMaintenanceRequest);
 //GET
-router.route("/asset-maintenance-requests").get(authentication, authorizeRoles("Production"),getAssetMaintenanceRequests);
+router.route("/asset-maintenance-requests").get(authentication, authorizeRoles("Production", "Supervisor"),getAssetMaintenanceRequests);
 router.route("/maintenance-request-assigned-mechanics").get(authentication, authorizeRoles("Production"), getAllAssetsWithMechanicsAssignedToCorrespondingMaintenenaceRequest);
 
 
