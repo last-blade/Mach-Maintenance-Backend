@@ -34,6 +34,7 @@ const createAssetMaintenanceRequest = asyncHandler(
       {
         $set: {
           underMaintenance: true,
+          assetStatus: "Not Working",
         },
       },
       { new: true }
