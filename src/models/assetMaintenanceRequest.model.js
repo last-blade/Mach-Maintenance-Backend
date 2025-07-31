@@ -29,6 +29,7 @@ const assetMaintenanceRequestSchema = new Schema({
     assetMaintenanceRequestCreator: {
         type: mongoose.Schema.Types.ObjectId,
         required: true,
+        ref: "Employee",
     },
 
     creatorModel: {
