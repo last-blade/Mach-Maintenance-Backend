@@ -39,6 +39,7 @@ import { getAcknowledgementDetailsForSupervisor } from "../controllers/assetCont
 import { getAssetsAssignedToMeForMaintenance } from "../controllers/assetControllers/assetMaintenanceControllers/Mechanic/getAssetsAssignedToMeForMaintenance.controller.js";
 import { getAllAssetsWithMechanicsAssignedToCorrespondingMaintenenaceRequest } from "../controllers/assetControllers/assetMaintenanceControllers/MaintenanceRequestor/getAllAssetsWithMechanicsAssignedToCorrespondingMaintenenaceRequest.controller.js";
 import { getAssetsCountingsCategorywise } from "../controllers/assetControllers/dashboardControllers/getAssetsCountingsCategorywise.controller.js";
+import { searchAssetByName } from "../controllers/assetControllers/searchAssetByName.controller.js";
 
 const router = Router();
 
@@ -78,6 +79,12 @@ router.route("/delete-asset-brand/:assetBrandId").delete(authentication, deleteA
 router.route("/delete-asset-supplier/:assetSupplierId").delete(authentication, deleteAssetSupplier);
 router.route("/delete-asset-spare/:assetSpareId").delete(authentication, deleteAssetSpare);
 router.route("/delete-asset/:assetId").delete(authentication, deleteAsset);
+
+
+//^-----------------------------------------------------Search Related Routes--------------------------------------------------------------
+
+router.route("/search-by-name").get(authentication, searchAssetByName);
+
 
 
 //^-----------------------------------------------------Maintenance Related Routes----------------------------------------------------------
