@@ -96,7 +96,7 @@ router.route("/filter-by-status").post(authentication, filterAssetsByStatus)
 router.route("/raise-maintenance-request/:assetId").post(authentication, authorizeRoles("Production"),createAssetMaintenanceRequest);
 //GET
 router.route("/asset-maintenance-requests").get(authentication, authorizeRoles("Production", "Supervisor"),getAssetMaintenanceRequests);
-router.route("/maintenance-request-assigned-mechanics").get(authentication, authorizeRoles("Production", "Supervisor"), getAllAssetsWithMechanicsAssignedToCorrespondingMaintenenaceRequest);
+router.route("/maintenance-request-assigned-mechanics").get(authentication, authorizeRoles("Production", "Supervisor", "Mechanic"), getAllAssetsWithMechanicsAssignedToCorrespondingMaintenenaceRequest);
 
 
 //~Supervisor
