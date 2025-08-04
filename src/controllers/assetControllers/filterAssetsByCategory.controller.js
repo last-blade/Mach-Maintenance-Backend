@@ -62,7 +62,7 @@ const filterAssetsByCategory = asyncHandler(async (request, response) => {
 
     return response.status(200)
     .json(
-        new apiResponse(200, result, "Fetched")
+        new apiResponse(200, filteredAssets, "Fetched")
     )
 
 });
