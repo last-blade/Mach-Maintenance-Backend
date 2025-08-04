@@ -85,7 +85,7 @@ router.route("/delete-asset/:assetId").delete(authentication, deleteAsset);
 //^-----------------------------------------------------Search Related Routes--------------------------------------------------------------
 
 router.route("/search-by-name").get(authentication, searchAssetByName);
-router.route("/filter-by-category").get(authentication, filterAssetsByCategory);
+router.route("/filter-by-category").post(authentication, filterAssetsByCategory);
 
 
 //^-----------------------------------------------------Maintenance Related Routes----------------------------------------------------------
