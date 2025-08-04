@@ -60,8 +60,37 @@ const getAllAssetsWithMechanicsAssignedToCorrespondingMaintenenaceRequest = asyn
         {
             $lookup: {
                 from: "assets",
-                localField: "assetId",
-                foreignField: "_id",
+                // localField: "assetId",
+                // foreignField: "_id",
+                // as: "asset"
+                let: {assetID: "$assetId"},
+                pipeline: [
+                    {
+                        $match: {
+                            $expr: {
+                                $eq: ["$_id", "$$assetID"]
+                            }
+                        }
+                    },
+
+                    {
+                        $lookup: {
+                            from: "locations",
+                            let: {locationId: "$assetLocation"},
+
+                            pipeline: [
+                                {
+                                    $match: {
+                                        $expr: {
+                                            $eq: ["$_id", "$$locationId"]
+                                        }
+                                    }
+                                },
+                            ],
+                            as: "location"
+                        }
+                    }
+                ],
                 as: "asset"
             }
         }
