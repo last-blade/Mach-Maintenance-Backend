@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { apiError, apiResponse, Asset, AssetMaintenance, asyncHandler, Employee } from "../allImports.js";
 
-const filterAssets = asyncHandler(async (request, response) => {
+const filterAssetsByCategory = asyncHandler(async (request, response) => {
     const {category, mechanic, location} = request.body;
 
     const filter = {};
@@ -66,4 +66,4 @@ const filterAssets = asyncHandler(async (request, response) => {
 
 });
 
-export {filterAssets}
+export {filterAssetsByCategory}

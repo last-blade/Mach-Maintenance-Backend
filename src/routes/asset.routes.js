@@ -40,7 +40,7 @@ import { getAssetsAssignedToMeForMaintenance } from "../controllers/assetControl
 import { getAllAssetsWithMechanicsAssignedToCorrespondingMaintenenaceRequest } from "../controllers/assetControllers/assetMaintenanceControllers/MaintenanceRequestor/getAllAssetsWithMechanicsAssignedToCorrespondingMaintenenaceRequest.controller.js";
 import { getAssetsCountingsCategorywise } from "../controllers/assetControllers/dashboardControllers/getAssetsCountingsCategorywise.controller.js";
 import { searchAssetByName } from "../controllers/assetControllers/searchAssetByName.controller.js";
-import { filterAssets } from "../controllers/assetControllers/filterAssets.controller.js";
+import { filterAssetsByCategory } from "../controllers/assetControllers/filterAssetsByCategory.controller.js";
 
 const router = Router();
 
@@ -85,7 +85,7 @@ router.route("/delete-asset/:assetId").delete(authentication, deleteAsset);
 //^-----------------------------------------------------Search Related Routes--------------------------------------------------------------
 
 router.route("/search-by-name").get(authentication, searchAssetByName);
-router.route("/filter").get(authentication, filterAssets);
+router.route("/filter-by-category").get(authentication, filterAssetsByCategory);
 
 
 //^-----------------------------------------------------Maintenance Related Routes----------------------------------------------------------
