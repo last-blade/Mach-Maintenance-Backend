@@ -50,7 +50,8 @@ const filterAssetsByCategory = asyncHandler(async (request, response) => {
     //     // }
     // ]);
 
-    const filteredAssets = await Asset.find(filter);
+    const filteredAssets = await Asset.find(filter).populate("assetCategory assetBrand assetSupplier assetLocation", "assetCategory assetBrand assetSupplierName assetType assetSupplierPhone assetCompanyName locationCode locationName")
+    .select("-assetCreator");
 
     if(filteredAssets.length === 0){
         return response.status(200)
