@@ -13,11 +13,11 @@ const filterAssets = asyncHandler(async (request, response) => {
         filter.assetCategory = category
     }
 
-    if(mechanic){
-        if(!mongoose.Types.ObjectId.isValid(mechanic)){
-            throw new apiError(400, "Mechanic ID is not valid")
-        }
-    }
+    // if(mechanic){
+    //     if(!mongoose.Types.ObjectId.isValid(mechanic)){
+    //         throw new apiError(400, "Mechanic ID is not valid")
+    //     }
+    // }
 
     if(location){
         if(!mongoose.Types.ObjectId.isValid(location)){
@@ -26,29 +26,29 @@ const filterAssets = asyncHandler(async (request, response) => {
         filter.assetLocation = location
     }
 
-    const result = await AssetMaintenance.aggregate([
-        {
-            $match: {
-                mechanic: new mongoose.Types.ObjectId(mechanic),
-            }
-        },
+    // const result = await AssetMaintenance.aggregate([
+    //     {
+    //         $match: {
+    //             mechanic: new mongoose.Types.ObjectId(mechanic),
+    //         }
+    //     },
 
-        {
-            $lookup: {
-                from: "assets",
-                localField: "assetId",
-                foreignField: "_id",
-                as: "assets"
-            }
-        },
+    //     {
+    //         $lookup: {
+    //             from: "assets",
+    //             localField: "assetId",
+    //             foreignField: "_id",
+    //             as: "assets"
+    //         }
+    //     },
 
-        // {
-        //     $project: {
-        //         password: 0,
-        //         refreshToken: 0,
-        //     }
-        // }
-    ]);
+    //     // {
+    //     //     $project: {
+    //     //         password: 0,
+    //     //         refreshToken: 0,
+    //     //     }
+    //     // }
+    // ]);
 
     const filteredAssets = await Asset.find(filter);
 
