@@ -41,6 +41,7 @@ import { getAllAssetsWithMechanicsAssignedToCorrespondingMaintenenaceRequest } f
 import { getAssetsCountingsCategorywise } from "../controllers/assetControllers/dashboardControllers/getAssetsCountingsCategorywise.controller.js";
 import { searchAssetByName } from "../controllers/assetControllers/searchAssetByName.controller.js";
 import { filterAssetsByCategory } from "../controllers/assetControllers/filterAssetsByCategory.controller.js";
+import { filterAssetsByStatus } from "../controllers/assetControllers/filterAssetsByStatus.controller.js";
 
 const router = Router();
 
@@ -86,7 +87,7 @@ router.route("/delete-asset/:assetId").delete(authentication, deleteAsset);
 
 router.route("/search-by-name").get(authentication, searchAssetByName);
 router.route("/filter-by-category").post(authentication, filterAssetsByCategory);
-
+router.route("/filter-by-status").post(authentication, filterAssetsByStatus)
 
 //^-----------------------------------------------------Maintenance Related Routes----------------------------------------------------------
 
