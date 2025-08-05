@@ -23,7 +23,12 @@ const assetTransferHistorySchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Asset",
         required: true,
-    },  
+    }, 
+    
+    remark: {
+        type: String,
+        required: true,
+    },
 
 }, {timestamps: true});
 
