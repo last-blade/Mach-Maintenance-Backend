@@ -16,6 +16,7 @@ import { AssetTransferHistory } from "../models/assetTransferHistory.model.js";
 import { AssetMaintenance } from "../models/assetMaintenance.model.js";
 import {AssetMaintenanceRequest} from "../models/assetMaintenanceRequest.model.js";
 import { MaintenanceAcknowledgment } from "../models/maintenanceAcknowledgment.model.js";
+import { AssetScheduledMaintenance } from "../models/assetScheduledMaintenance.model.js";
 
 export {
     asyncHandler,
@@ -36,4 +37,5 @@ export {
     AssetMaintenance,
     AssetMaintenanceRequest,
     MaintenanceAcknowledgment,
+    AssetScheduledMaintenance,
 }
