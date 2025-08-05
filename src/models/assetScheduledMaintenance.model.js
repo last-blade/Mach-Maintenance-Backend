@@ -14,7 +14,7 @@ const assetScheduledMaintenanceSchema = new Schema({
 
     maintenanceScheduledId: {
         type: String,
-        required: true,
+        required: false,
     },
 
     maintenanceScheduledBy: {
