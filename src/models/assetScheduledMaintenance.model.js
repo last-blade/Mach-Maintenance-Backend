@@ -17,6 +17,12 @@ const assetScheduledMaintenanceSchema = new Schema({
         required: false,
     },
 
+    mechanic: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Employee",
+        required: true,
+    },
+
     maintenanceScheduledBy: {
        type: mongoose.Schema.Types.ObjectId,
        ref: "Employee", 
