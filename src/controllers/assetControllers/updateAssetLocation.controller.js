@@ -2,10 +2,18 @@ import { apiError, apiResponse, Asset, AssetTransferHistory, asyncHandler, Locat
 
 const updateAssetLocation = asyncHandler(async (request, response) => {
     const {assetId} = request.params;
-    const {locationId, assetStatus} = request.body;
+    const {locationId, remark} = request.body;
 
-    if(!locationId || !assetStatus || !assetId){
-        throw new apiError(400, "All fields are required")
+    if(!assetId){
+        throw new apiResponse(400, "Asset ID is required")
+    }
+
+    if(!locationId){
+        throw new apiError(400, "Location Id is required")
+    }
+
+    if(!remark){
+        throw new apiError(400, "Remark is required")
     }
 
     const foundAsset = await Asset.findById(assetId);
@@ -23,7 +31,6 @@ const updateAssetLocation = asyncHandler(async (request, response) => {
     const updatedAssetLocation = await Asset.findByIdAndUpdate(assetId, {
         $set: {
             assetLocation: locationId,
-            assetStatus,
         }
     }, {new: true}).populate("assetLocation", "locationName locationCode").select("-assetCreator -__v");
 
@@ -31,7 +38,8 @@ const updateAssetLocation = asyncHandler(async (request, response) => {
         assetLocationChangedBy: request.user.id,
         assetOldLocation: foundAsset.assetLocation,
         assetNewLocation: locationId,
-        assetId
+        assetId,
+        remark,
     });
 
     return response.status(200)
