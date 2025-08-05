@@ -99,7 +99,13 @@ const assetSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
         required: true,
-    }
+    },
+
+    isUnderScheduledMaintenance: {
+        type: Boolean,
+        default: false,
+        required: false
+    },
 
 }, {timestamps: true});
 
