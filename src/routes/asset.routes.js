@@ -42,6 +42,8 @@ import { getAssetsCountingsCategorywise } from "../controllers/assetControllers/
 import { searchAssetByName } from "../controllers/assetControllers/searchAssetByName.controller.js";
 import { filterAssetsByCategory } from "../controllers/assetControllers/filterAssetsByCategory.controller.js";
 import { filterAssetsByStatus } from "../controllers/assetControllers/filterAssetsByStatus.controller.js";
+import { scheduleAssetMaintenance } from "../controllers/assetControllers/assetMaintenanceControllers/ScheduleMaintenance/scheduleAssetMaintenance.controller.js";
+import { getScheduledMaintenances } from "../controllers/assetControllers/assetMaintenanceControllers/ScheduleMaintenance/getScheduledMaintenances.controller.js";
 
 const router = Router();
 
@@ -94,6 +96,9 @@ router.route("/filter-by-status").post(authentication, filterAssetsByStatus)
 //~Production
 //POST
 router.route("/raise-maintenance-request/:assetId").post(authentication, authorizeRoles("Production"),createAssetMaintenanceRequest);
+                                                            //ScheduleMaintenance
+router.route("/schedule-maintenance").post(authentication, authorizeRoles("Production"), scheduleAssetMaintenance);
+router.route("/scheduled-maintenances").get(authentication, getScheduledMaintenances);
 //GET
 router.route("/asset-maintenance-requests").get(authentication, authorizeRoles("Production", "Supervisor"),getAssetMaintenanceRequests);
 router.route("/maintenance-request-assigned-mechanics").get(authentication, authorizeRoles("Production", "Supervisor", "Mechanic"), getAllAssetsWithMechanicsAssignedToCorrespondingMaintenenaceRequest);
