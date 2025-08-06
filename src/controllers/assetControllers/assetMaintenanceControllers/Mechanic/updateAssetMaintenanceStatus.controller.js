@@ -15,6 +15,12 @@ const updateAssetMaintenanceStatus = asyncHandler(async (request, response) => {
         throw new apiError(400, "Remark is required")
     }
 
+    const foundAsset = await Asset.findById(assetId);
+
+    if(!foundAsset){
+        throw new apiError(404, "Asset not found")
+    }
+
     const foundCorrespondingMaintenance = await AssetMaintenance.findOne({
         isActive: true,
         assetId,
