@@ -9,7 +9,7 @@ import { apiError, apiResponse, asyncHandler, MaintenanceAcknowledgment } from "
 const getAcknowledgementDetailsForSupervisor = asyncHandler(async (request, response) => {
     const {acknowledgementId} = request.params;
 
-    const acknowledgement = await MaintenanceAcknowledgment.findById(acknowledgementId);
+    const acknowledgement = await MaintenanceAcknowledgment.findById(acknowledgementId).populate("assetSpareId");
 
     if(!acknowledgement){
         throw new apiError(404, "Acknowledgement not found")
