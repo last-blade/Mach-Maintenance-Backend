@@ -43,6 +43,22 @@ const getAllAssetsWithMechanicAssigned = asyncHandler(async (request, response) 
                                             $eq: ["$_id", "$$assetID"]
                                         }
                                     }
+                                },
+
+                                {
+                                    $lookup: {
+                                        from: "locations",
+                                        localField: "assetLocation",
+                                        foreignField: "_id",
+                                        as: "location"
+                                    }
+                                },
+
+                                {
+                                    $unwind: {
+                                        path: "$location",
+                                        preserveNullAndEmptyArrays: true
+                                    }
                                 }
                             ],
 
