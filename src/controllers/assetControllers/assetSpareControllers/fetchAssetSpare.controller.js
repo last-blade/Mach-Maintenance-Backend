@@ -3,11 +3,11 @@ import { apiResponse, AssetSpare, asyncHandler } from "../../allImports.js";
 
 const fetchAssetSpare = asyncHandler(async (request, response) => {
     const spares = await AssetSpare.aggregate([
-    {
-      $match: {
-        assetSpareCreator: new mongoose.Types.ObjectId(request.user.id),
-      },
-    },
+    // {
+    //   $match: {
+    //     assetSpareCreator: new mongoose.Types.ObjectId(request.user.id),
+    //   },
+    // },
 
     {
       $lookup: {
