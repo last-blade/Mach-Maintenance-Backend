@@ -51,6 +51,13 @@ const getAssetMaintenanceRequests = asyncHandler(async (request, response) => {
                 ],
                 as: "assetId"
             }
+        },
+
+        {
+            $unwind: {
+                path: "$assetId",
+                preserveNullAndEmptyArrays: true
+            }
         }
     ])
 
