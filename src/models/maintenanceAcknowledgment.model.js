@@ -7,12 +7,14 @@ const maintenanceAcknowledgmentSchema = new Schema({
         trim: true,
     },
 
-    assetSpareId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "AssetSpare",
-        required: false,
-        default: null,
-    },
+    assetSpareId: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "AssetSpare",
+            required: false,
+            default: null,
+        }
+    ],
 
     status: {
         type: String,
