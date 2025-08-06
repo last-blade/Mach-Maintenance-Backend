@@ -1,8 +1,8 @@
-import { apiResponse, AssetMaintenance, asyncHandler } from "../../../allImports.js";
+import { apiResponse, AssetMaintenance, asyncHandler, MaintenanceAcknowledgment } from "../../../allImports.js";
 
 const getAcknowledgementsCorrespondingToMaintenanceId = asyncHandler(async (request, response) => {
-    const acknowledgementsCorrespondingToMaintenanceId = await AssetMaintenance.find({})
-    .populate("acknowledgementId assetMaintenanceRequestId assetId");
+    const acknowledgementsCorrespondingToMaintenanceId = await MaintenanceAcknowledgment.find({})
+    .populate("assetSpareId maintenanceId assetId");
 
     return response.status(200)
     .json(
