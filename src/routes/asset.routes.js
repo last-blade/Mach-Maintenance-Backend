@@ -44,6 +44,7 @@ import { filterAssetsByCategory } from "../controllers/assetControllers/filterAs
 import { filterAssetsByStatus } from "../controllers/assetControllers/filterAssetsByStatus.controller.js";
 import { scheduleAssetMaintenance } from "../controllers/assetControllers/assetMaintenanceControllers/ScheduleMaintenance/scheduleAssetMaintenance.controller.js";
 import { getScheduledMaintenances } from "../controllers/assetControllers/assetMaintenanceControllers/ScheduleMaintenance/getScheduledMaintenances.controller.js";
+import { getAllAcknowledgementsOfParticularAsset } from "../controllers/assetControllers/assetMaintenanceControllers/Supervisor/getAllAcknowledgementsOfParticularAsset.controller.js";
 
 const router = Router();
 
@@ -113,6 +114,7 @@ router.route("/close-maintenance-request/:assetId").patch(authentication, author
 router.route("/assets-with-mechanics").get(authentication, authorizeRoles("Supervisor"), getAllAssetsWithMechanicAssigned);
 router.route("/acknowledgements-of-maintenance").get(authentication, authorizeRoles("Supervisor"), getAcknowledgementsCorrespondingToMaintenanceId);
 router.route("/acknowledgement/:acknowledgementId").get(authentication, authorizeRoles("Supervisor"), getAcknowledgementDetailsForSupervisor);
+router.route("/acknowledgements/:assetId").get(authentication, getAllAcknowledgementsOfParticularAsset);
 
 
 //~Mechanic
