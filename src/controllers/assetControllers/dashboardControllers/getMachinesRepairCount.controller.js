@@ -39,9 +39,23 @@ const getMachinesRepairCount = asyncHandler(async (request, response) => {
                     }
 
                 ],
-                as: "asset"
+                as: "assetRepairCount"
             }
-        }
+        },
+
+        {
+            $unwind: {
+                path: "$assetRepairCount",
+                preserveNullAndEmptyArrays: true
+            },
+        },
+
+        {
+            $project: {
+                assetRepairCount: 1,
+                _id: 0
+            }
+        },
     ]);
 
     return response.status(200)
