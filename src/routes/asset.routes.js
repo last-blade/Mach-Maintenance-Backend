@@ -45,6 +45,7 @@ import { filterAssetsByStatus } from "../controllers/assetControllers/filterAsse
 import { scheduleAssetMaintenance } from "../controllers/assetControllers/assetMaintenanceControllers/ScheduleMaintenance/scheduleAssetMaintenance.controller.js";
 import { getScheduledMaintenances } from "../controllers/assetControllers/assetMaintenanceControllers/ScheduleMaintenance/getScheduledMaintenances.controller.js";
 import { getAllAcknowledgementsOfParticularAsset } from "../controllers/assetControllers/assetMaintenanceControllers/Supervisor/getAllAcknowledgementsOfParticularAsset.controller.js";
+import { getMachinesRepairCount } from "../controllers/assetControllers/dashboardControllers/getMachinesRepairCount.controller.js";
 
 const router = Router();
 
@@ -67,6 +68,7 @@ router.route("/asset-transfer-history").get(authentication, getAssetTransferHist
 router.route("/asset/:assetId").get(getAsset);
 router.route("/asset-history/:assetId").get(authentication, getAssetDetails);
 router.route("/assets-counting-with-category").get(authentication, getAssetsCountingsCategorywise);
+router.route("/assets-repair-count").get(authentication, getMachinesRepairCount);
 
 //PATCH
 router.route("/change-asset-location/:assetId").patch(authentication, authorizeRoles("Production", "Supervisor", "Admin", "HR"),updateAssetLocation);
