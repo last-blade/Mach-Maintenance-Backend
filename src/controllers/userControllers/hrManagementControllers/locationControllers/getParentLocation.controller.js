@@ -2,7 +2,7 @@ import { apiResponse, asyncHandler, Location } from "../../../allImports.js";
 
 const getParentLocation = asyncHandler(async (request, response) => {
     const location = await Location.find({
-        locationCreator: request.user.id,
+        // locationCreator: request.user.id,
         isFactory: true,
     }).select("-locationCreator -__v");
 
