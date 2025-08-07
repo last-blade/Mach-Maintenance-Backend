@@ -5,7 +5,7 @@ const getLocation = asyncHandler(async (request, response) => {
     const {locationId} = request.params;
 
     const location = await Location.find({
-        locationCreator: request.user.id,
+        // locationCreator: request.user.id,
         _id: locationId,
         // isFactory: true,
     }).populate("children", "locationName locationCode").select("-locationCreator");
