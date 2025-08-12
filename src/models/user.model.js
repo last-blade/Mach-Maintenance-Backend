@@ -32,6 +32,7 @@ const userSchema = new Schema({
         enum: ["Admin", "HR"],
         required: true,
         trim: true,
+        index: true,
     },
 
     password: {
