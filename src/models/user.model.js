@@ -38,7 +38,7 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true,
-        select: false,
+        // select: false,
     },
 
     profileImage: {
@@ -49,7 +49,7 @@ const userSchema = new Schema({
     refreshToken :{
         type: String,
         required: false,
-        select: false,
+        // select: false,
     }
 }, {timestamps: true});
 
