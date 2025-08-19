@@ -102,7 +102,7 @@ router.route("/filter-by-status").post(authentication, filterAssetsByStatus)
 router.route("/raise-maintenance-request/:assetId").post(authentication, authorizeRoles("Production"),createAssetMaintenanceRequest);
 
 //PATCH
-router.route("/is-production-satistied-by-mechanic/:assetId").patch(authentication, authorizeRoles("Production"), isProductionSatisfiedByMechanic);
+router.route("/is-production-satisfied-by-mechanic/:assetId").patch(authentication, authorizeRoles("Production"), isProductionSatisfiedByMechanic);
                                                             //ScheduleMaintenance
 router.route("/schedule-maintenance").post(authentication, authorizeRoles("Production"), scheduleAssetMaintenance);
 router.route("/scheduled-maintenances").get(authentication, getScheduledMaintenances);
