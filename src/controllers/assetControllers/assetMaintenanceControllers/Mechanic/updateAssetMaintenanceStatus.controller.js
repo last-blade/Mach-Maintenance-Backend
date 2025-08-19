@@ -62,8 +62,10 @@ const updateAssetMaintenanceStatus = asyncHandler(async (request, response) => {
     //     });
     // }
 
-    foundAsset.isProductionSatisfiedPopupVisible = true;
-    await foundAsset.save({validateBeforeSave: false});
+    if(status === "completed"){
+        foundAsset.isProductionSatisfiedPopupVisible = true;
+        await foundAsset.save({validateBeforeSave: false});
+    }
 
     return response.status(200)
     .json(
