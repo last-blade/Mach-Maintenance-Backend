@@ -46,6 +46,7 @@ import { scheduleAssetMaintenance } from "../controllers/assetControllers/assetM
 import { getScheduledMaintenances } from "../controllers/assetControllers/assetMaintenanceControllers/ScheduleMaintenance/getScheduledMaintenances.controller.js";
 import { getAllAcknowledgementsOfParticularAsset } from "../controllers/assetControllers/assetMaintenanceControllers/Supervisor/getAllAcknowledgementsOfParticularAsset.controller.js";
 import { getMachinesRepairCount } from "../controllers/assetControllers/dashboardControllers/getMachinesRepairCount.controller.js";
+import { isProductionSatisfiedByMechanic } from "../controllers/assetControllers/assetMaintenanceControllers/MaintenanceRequestor/isProductionSatisfiedByMechanic.controller.js";
 
 const router = Router();
 
@@ -99,6 +100,9 @@ router.route("/filter-by-status").post(authentication, filterAssetsByStatus)
 //~Production
 //POST
 router.route("/raise-maintenance-request/:assetId").post(authentication, authorizeRoles("Production"),createAssetMaintenanceRequest);
+
+//PATCH
+router.route("/is-production-satistied-by-mechanic/:assetId").patch(authentication, authorizeRoles("Production"), isProductionSatisfiedByMechanic);
                                                             //ScheduleMaintenance
 router.route("/schedule-maintenance").post(authentication, authorizeRoles("Production"), scheduleAssetMaintenance);
 router.route("/scheduled-maintenances").get(authentication, getScheduledMaintenances);

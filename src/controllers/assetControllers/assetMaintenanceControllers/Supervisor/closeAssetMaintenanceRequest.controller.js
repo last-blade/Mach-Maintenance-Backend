@@ -18,7 +18,8 @@ const closeAssetMaintenanceRequest = asyncHandler(async (request, response) => {
     await Asset.findByIdAndUpdate(assetId, {
         $set: {
             underMaintenance: false,
-            assetStatus: "Working"
+            assetStatus: "Working",
+            isProductionSatisfiedByMechanic: false,
         }
     });
 
