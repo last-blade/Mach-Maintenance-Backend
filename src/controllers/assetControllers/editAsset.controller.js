@@ -34,15 +34,15 @@ const editAsset = asyncHandler(async(request, response) => {
         assetPurchaseDate, assetPrice, specialAsset, assetStatus, assetSupplier, assetLocation,
     }, {new: true});
 
-    const qrData = `Asset ID: ${updatedAsset._id}
-                    Asset Code: ${updatedAsset.assetCode}
-                    Asset Name: ${updatedAsset.assetName}
-                    Brand: ${updatedAsset.assetBrand} | ID: ${updatedAsset._id}`
-    ;
-    const qrCodeDataUri = await QRCode.toDataURL(qrData);
+    // const qrData = `Asset ID: ${updatedAsset._id}
+    //                 Asset Code: ${updatedAsset.assetCode}
+    //                 Asset Name: ${updatedAsset.assetName}
+    //                 Brand: ${updatedAsset.assetBrand} | ID: ${updatedAsset._id}`
+    // ;
+    // const qrCodeDataUri = await QRCode.toDataURL(qrData);
     
-    updatedAsset.assetQrCodeUrl = qrCodeDataUri;
-    await updatedAsset.save({validateBeforeSave: false});
+    // updatedAsset.assetQrCodeUrl = qrCodeDataUri;
+    // await updatedAsset.save({validateBeforeSave: false});
 
     return response.status(200)
     .json(
