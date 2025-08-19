@@ -13,7 +13,7 @@ const getAssets = asyncHandler(async (request, response) => {
     }).populate("assetLocation", "locationName locationCode")
     .populate("assetBrand", "assetBrand assetBrandDescription")
     .populate("assetCategory", "assetCategory depreciationPercentage")
-    .populate("assetSupplier", "assetSupplierName assetCompanyName")
+    .populate("assetSupplier", "assetSupplierName assetCompanyName").sort({createdAt: -1})
     // .skip(skip).limit(limit).sort({createdAt: -1});
 
     return response.status(200)
