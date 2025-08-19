@@ -62,6 +62,9 @@ const updateAssetMaintenanceStatus = asyncHandler(async (request, response) => {
     //     });
     // }
 
+    foundAsset.isProductionSatisfiedPopupVisible = true;
+    await foundAsset.save({validateBeforeSave: false});
+
     return response.status(200)
     .json(
         new apiResponse(200, {}, "Acknowledgement sent to supervisor")
