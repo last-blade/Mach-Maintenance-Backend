@@ -107,6 +107,18 @@ const assetSchema = new Schema({
         required: false
     },
 
+    isProductionSatisfied: {
+        type: Boolean,
+        default: false,
+        required: false,
+    },
+
+    isProductionSatisfiedPopupVisible: {
+        type: Boolean,
+        default: false,
+        required: false,
+    },
+
 }, {timestamps: true});
 
 export const Asset = mongoose.model("Asset", assetSchema);
