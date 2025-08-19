@@ -20,7 +20,7 @@ const editAsset = asyncHandler(async(request, response) => {
     } = request.body;
 
     if([assetCategory, assetModelNo, assetName, assetCode, 
-        assetBrand, assetPurchaseDate, assetPrice, specialAsset, 
+        assetBrand, assetPurchaseDate, specialAsset, 
         assetStatus, assetSupplier, assetLocation].some(inputField => inputField === undefined || inputField.trim() === "")
     ){
         throw new apiError(404, "All mandatory fields are required to fill")
