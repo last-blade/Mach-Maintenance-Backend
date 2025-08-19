@@ -107,7 +107,7 @@ const assetSchema = new Schema({
         required: false
     },
 
-    isProductionSatisfied: {
+    isProductionSatisfiedByMechanic: {
         type: Boolean,
         default: false,
         required: false,
