@@ -7,7 +7,6 @@ const assetMaintenanceSchema = new Schema({
         required: false,
         trim: true,
         unique: true,
-        index: true,
     },
 
     mechanic: {
