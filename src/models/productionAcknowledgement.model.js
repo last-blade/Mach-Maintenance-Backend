@@ -12,12 +12,13 @@ const productionAcknowledgementSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Asset",
         required: true,
+        index: true,
     },
 
     maintenanceAcknowledgementId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "MaintenanceAcknowledgment",
-        required: true,
+        required: false,
     },
 
     productionAcknowledgementCreator: {
