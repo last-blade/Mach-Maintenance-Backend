@@ -39,6 +39,7 @@ const maintenanceAcknowledgmentSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Asset",
         required: true,
+        index: true,
     },
 
     maintenanceId: {
