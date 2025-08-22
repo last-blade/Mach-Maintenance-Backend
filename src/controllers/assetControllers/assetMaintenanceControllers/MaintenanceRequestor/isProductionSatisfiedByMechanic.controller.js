@@ -1,4 +1,4 @@
-import { isValidObjectId } from "../../../../utils/isValidObjectId.js";
+// import { isValidObjectId } from "../../../../utils/isValidObjectId.js";
 import { apiError, apiResponse, Asset, asyncHandler, ProductionAcknowledgement } from "../../../allImports.js";
 
 const isProductionSatisfiedByMechanic = asyncHandler(async (request, response) => {
@@ -32,14 +32,14 @@ const isProductionSatisfiedByMechanic = asyncHandler(async (request, response) =
     await foundAsset.save({validateBeforeSave: false});
 
     if(isProductionSatisfiedByMechanic === "No"){
-        if(!isValidObjectId(maintenanceId)){
-            throw new apiError(400, "Maintenance ID is invalid")
-        }
+        // if(!isValidObjectId(maintenanceId)){
+        //     throw new apiError(400, "Maintenance ID is invalid")
+        // }
         await ProductionAcknowledgement.create({
             acknowledgement,
             assetId,
             productionAcknowledgementCreator: request.user.id,
-            maintenanceAcknowledgementId: maintenanceId,
+            // maintenanceAcknowledgementId: maintenanceId,
         })
     }
 
