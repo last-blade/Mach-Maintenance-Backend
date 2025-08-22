@@ -14,6 +14,7 @@ const assetMaintenanceSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Employee",
         required: true,
+        index: true,
     },
 
     assetId: {
