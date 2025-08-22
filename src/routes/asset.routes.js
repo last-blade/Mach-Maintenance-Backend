@@ -47,6 +47,9 @@ import { getScheduledMaintenances } from "../controllers/assetControllers/assetM
 import { getAllAcknowledgementsOfParticularAsset } from "../controllers/assetControllers/assetMaintenanceControllers/Supervisor/getAllAcknowledgementsOfParticularAsset.controller.js";
 import { getMachinesRepairCount } from "../controllers/assetControllers/dashboardControllers/getMachinesRepairCount.controller.js";
 import { isProductionSatisfiedByMechanic } from "../controllers/assetControllers/assetMaintenanceControllers/MaintenanceRequestor/isProductionSatisfiedByMechanic.controller.js";
+import { getProductionAcknowledgements } from "../controllers/assetControllers/assetMaintenanceControllers/Mechanic/getProductionAcknowledgements.controller.js";
+import { getAssetMaintenanceTimeOfParticularRequest } from "../controllers/assetControllers/assetMaintenanceControllers/MaintenanceTime/getAssetMaintenanceTimeOfParticularRequest.controller.js";
+import { getAllAssetsTotalMaintenanceTime } from "../controllers/assetControllers/assetMaintenanceControllers/MaintenanceTime/getAllAssetsTotalMaintenanceTime.controller.js";
 
 const router = Router();
 
@@ -70,6 +73,8 @@ router.route("/asset/:assetId").get(getAsset);
 router.route("/asset-history/:assetId").get(authentication, getAssetDetails);
 router.route("/assets-counting-with-category").get(authentication, getAssetsCountingsCategorywise);
 router.route("/assets-repair-count").get(authentication, getMachinesRepairCount);
+router.route("/asset-maintenance-times/:assetId").get(authentication, authorizeRoles("Admin", "HR"), getAssetMaintenanceTimeOfParticularRequest);
+router.route("/total-maintenance-times").get(authentication, authorizeRoles("Admin", "HR"), getAllAssetsTotalMaintenanceTime);
 
 //PATCH
 router.route("/change-asset-location/:assetId").patch(authentication, authorizeRoles("Production", "Supervisor", "Admin", "HR"),updateAssetLocation);
@@ -128,6 +133,7 @@ router.route("/acknowledgements/:assetId").get(authentication, getAllAcknowledge
 router.route("/send-acknowledgement").post(authentication, authorizeRoles("Mechanic"),updateAssetMaintenanceStatus);
 //GET
 router.route("/maintenances-assigned-to-me").get(authentication, authorizeRoles("Mechanic"), getAssetsAssignedToMeForMaintenance);
+router.route("/production-acknowledgements/:assetId").get(authentication, authorizeRoles("Mechanic", "Production"), getProductionAcknowledgements);
 
 
 //~Admin/HR
