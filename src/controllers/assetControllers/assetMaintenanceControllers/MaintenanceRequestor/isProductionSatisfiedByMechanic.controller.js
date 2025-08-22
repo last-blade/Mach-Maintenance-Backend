@@ -31,11 +31,10 @@ const isProductionSatisfiedByMechanic = asyncHandler(async (request, response) =
     }
     await foundAsset.save({validateBeforeSave: false});
 
-    if(!isValidObjectId(maintenanceId)){
-        throw new apiError(400, "Maintenance ID is invalid")
-    }
-
     if(isProductionSatisfiedByMechanic === "No"){
+        if(!isValidObjectId(maintenanceId)){
+            throw new apiError(400, "Maintenance ID is invalid")
+        }
         await ProductionAcknowledgement.create({
             acknowledgement,
             assetId,
