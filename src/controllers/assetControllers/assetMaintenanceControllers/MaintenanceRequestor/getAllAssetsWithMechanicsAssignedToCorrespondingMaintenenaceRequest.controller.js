@@ -3,11 +3,11 @@ import { apiResponse, AssetMaintenanceRequest, asyncHandler } from "../../../all
 
 const getAllAssetsWithMechanicsAssignedToCorrespondingMaintenenaceRequest = asyncHandler(async (request, response) => {
     const assetMechanicsCorrespondingToMaintenanceRequest = await AssetMaintenanceRequest.aggregate([
-        {
-            $match: {
-                assetMaintenanceRequestCreator: new mongoose.Types.ObjectId(request.user.id)
-            }
-        },
+        // {
+        //     $match: {
+        //         assetMaintenanceRequestCreator: new mongoose.Types.ObjectId(request.user.id)
+        //     }
+        // },
 
         {
             $lookup: {
