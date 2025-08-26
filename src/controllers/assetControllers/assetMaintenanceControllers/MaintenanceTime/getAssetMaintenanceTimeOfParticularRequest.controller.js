@@ -30,7 +30,7 @@ const getAssetMaintenanceTimeOfParticularRequest = asyncHandler(async (request, 
         const diffMinutes = diffMs / (1000 * 60);
 
         return {
-            assetId: asset._id,
+            manintenanceId: asset._id,
             assetName: foundAsset.assetName,
             assetCode: foundAsset.assetCode,
             assetModelNo: foundAsset.assetModelNo,
