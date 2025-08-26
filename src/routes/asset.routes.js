@@ -50,6 +50,7 @@ import { isProductionSatisfiedByMechanic } from "../controllers/assetControllers
 import { getProductionAcknowledgements } from "../controllers/assetControllers/assetMaintenanceControllers/Mechanic/getProductionAcknowledgements.controller.js";
 import { getAssetMaintenanceTimeOfParticularRequest } from "../controllers/assetControllers/assetMaintenanceControllers/MaintenanceTime/getAssetMaintenanceTimeOfParticularRequest.controller.js";
 import { getAllAssetsTotalMaintenanceTime } from "../controllers/assetControllers/assetMaintenanceControllers/MaintenanceTime/getAllAssetsTotalMaintenanceTime.controller.js";
+import { getAllAssetsDownTime } from "../controllers/assetControllers/assetMaintenanceControllers/MaintenanceTime/getAllAssetsDownTime.controller.js";
 
 const router = Router();
 
@@ -75,6 +76,7 @@ router.route("/assets-counting-with-category").get(authentication, getAssetsCoun
 router.route("/assets-repair-count").get(authentication, getMachinesRepairCount);
 router.route("/asset-maintenance-times/:assetId").get(authentication, authorizeRoles("Admin", "HR"), getAssetMaintenanceTimeOfParticularRequest);
 router.route("/total-maintenance-times").get(authentication, authorizeRoles("Admin", "HR"), getAllAssetsTotalMaintenanceTime);
+router.route("/total-down-times").get(authentication, authorizeRoles("Admin", "HR"), getAllAssetsDownTime);
 
 //PATCH
 router.route("/change-asset-location/:assetId").patch(authentication, authorizeRoles("Production", "Supervisor", "Admin", "HR"),updateAssetLocation);
