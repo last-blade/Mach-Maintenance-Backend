@@ -49,6 +49,7 @@ const assetMaintenanceRequestSchema = new Schema({
         type: Boolean,
         required: true,
         default: true,
+        index: true,
     },
 
 }, {timestamps: true});
