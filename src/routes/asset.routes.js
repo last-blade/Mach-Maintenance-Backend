@@ -52,6 +52,7 @@ import { getAssetMaintenanceTimeOfParticularRequest } from "../controllers/asset
 import { getAllAssetsTotalMaintenanceTime } from "../controllers/assetControllers/assetMaintenanceControllers/MaintenanceTime/getAllAssetsTotalMaintenanceTime.controller.js";
 import { getAllAssetsDownTime } from "../controllers/assetControllers/assetMaintenanceControllers/MaintenanceTime/getAllAssetsDownTime.controller.js";
 import { getAssetDowntime } from "../controllers/assetControllers/assetMaintenanceControllers/MaintenanceTime/getAssetDowntime.controller.js";
+import { getAssetFullReport } from "../controllers/assetControllers/getAssetFullReport.controller.js";
 
 const router = Router();
 
@@ -79,6 +80,7 @@ router.route("/asset-maintenance-times/:assetId").get(authentication, authorizeR
 router.route("/total-maintenance-times").get(authentication, authorizeRoles("Admin", "HR"), getAllAssetsTotalMaintenanceTime);
 router.route("/total-down-times").get(authentication, authorizeRoles("Admin", "HR"), getAllAssetsDownTime);
 router.route("/asset-down-times/:assetId").get(authentication, authorizeRoles("Admin", "HR"), getAssetDowntime);
+router.route("/report/:assetId").get(authentication, getAssetFullReport);
 
 
 //PATCH
